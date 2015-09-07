@@ -72,6 +72,7 @@ noremap <S-Tab> gT
 
 noremap <C-x> :wq<CR>
 noremap <C-y> :q!<CR>
+noremap \ :qal!<CR>
 map <C-d> <C-x>
 
 cnoremap W w
