@@ -1,0 +1,1 @@
+/Users/bagrat/drive/etc/dotfiles/././.bashrc.d

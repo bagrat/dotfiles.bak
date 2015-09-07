@@ -1,0 +1,17 @@
+#!/bin/bash
+# Setting PATH for Python 3.4
+# The orginal version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
+export PATH
+
+# Python Virtual Environment
+export WORKON_HOME="~/.virtualenvs"
+VENVW=`which virtualenvwrapper.sh`
+export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/Current/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
+[ ! "$VENVW" == "" ] && source $VENVW
+alias mkvenv3="mkvirtualenv --python=`which python3`"
+
+# pip
+export PIP_DOWNLOAD_CACHE="~/.pip/repository"
+

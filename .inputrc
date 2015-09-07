@@ -1,0 +1,3 @@
+set mark-symlinked-directories on
+set match-hidden-files on
+set skip-completed-text on

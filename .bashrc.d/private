@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -d ~/.privaterc.d ]
+then
+    for file in ~/.privaterc.d/*
+    do
+        source $file
+    done
+fi
+

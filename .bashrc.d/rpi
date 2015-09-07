@@ -1,0 +1,10 @@
+#!/bin/bash
+
+function rpiaddr {
+   SUBNET=`inetmask`
+   sudo nmap -sn $SUBNET | grep -B 2 "MAC Address: E8:4E:06:11:AC:8F" | head -n 1 | cut -d \  -f5
+}
+
+function rpissh {
+   ssh bagrat@`rpiaddr`
+}

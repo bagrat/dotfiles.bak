@@ -1,0 +1,47 @@
+#!/bin/bash
+
+function _vmlist {
+   if [ $COMP_CWORD -ne 1 ]
+   then 
+      return
+   fi
+   OPTS=$1
+   local cur=${COMP_WORDS[COMP_CWORD]}
+   COMPREPLY=( $(compgen -W "$OPTS" -- $cur) )
+}
+function _vmstart {
+   OPTS=`vmlist -o`
+   _vmlist "$OPTS"
+}
+function _vmrestart {
+   OPTS=`vmlist -r`
+   _vmlist "$OPTS"
+}
+function _vmstop {
+   OPTS=`vmlist -r`
+   _vmlist "$OPTS"
+}
+function _vmisup {
+   OPTS=`vmlist -a`
+   _vmlist "$OPTS"
+}
+function _vmip {
+   OPTS=`vmlist -r`
+   _vmlist "$OPTS"
+}
+function _vmssh {
+   OPTS=`vmlist -r`
+   _vmlist "$OPTS"
+}
+function _vmrst {
+   OPTS=`vmlist -a`
+   _vmlist "$OPTS"
+}
+
+complete -F _vmstart vmstart
+complete -F _vmrestart vmrestart
+complete -F _vmstop vmstop
+complete -F _vmisup vmisup
+complete -F _vmip vmip
+complete -F _vmssh vmssh
+complete -F _vmrst vmrst

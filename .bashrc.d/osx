@@ -1,0 +1,2 @@
+#!/bin/bash
+alias camr='sudo killall VDCAssistant; sudo killall AppleCameraAssistant'

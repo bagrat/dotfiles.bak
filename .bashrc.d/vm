@@ -1,0 +1,124 @@
+#!/bin/bash
+######### Virtual Machines ###############
+
+function vmcheckvbox {
+   hash VBoxHeadless > /dev/null || { echo "VirtualBox seems to be absent?"; return 1; }
+}
+function vmstart {
+   vmcheckvbox || return 1;
+   if [ -z $1 ]
+   then
+      echo -e `clr_blue "Which VM?"`
+      return 2
+   fi
+   VBoxHeadless --startvm $1 || return 1 &
+}
+function vmstop {
+   vmcheckvbox || return 1;
+   if [ -z $1 ]
+   then
+      echo -e `clr_blue "Which VM?"`
+      return 2
+   fi
+   VBoxManage controlvm $1 poweroff || return 1;
+}
+function vmrestart {
+   vmstop $1 || vmstart $1;
+}
+function vmlist {
+   vmcheckvbox || return 1;
+   RVMS=`mktemp -t vmr`
+   AVMS=`mktemp -t vma`
+   OVMS=`mktemp -t vmo`
+   VBoxManage list vms | cut -d \  -f 1 | cut -d \" -f 2 | sort > $AVMS
+   VBoxManage list runningvms | cut -d \  -f 1 | cut -d \" -f 2 | sort > $RVMS
+
+   comm -2 -3 $AVMS $RVMS > $OVMS
+
+   if [ -z $1 ]
+   then
+      clr_bold "`clr_brown "Running VMs:"`"
+      for vm in `cat $RVMS`
+      do
+         line="$vm - `vmip $vm`"
+         clr_green "$line"
+      done
+      echo
+      clr_brown "Down VMs:"
+      clr_blue "`cat $OVMS`"
+   else
+      if [ $1 == "-r" ]
+      then
+         cat $RVMS
+      elif [ $1 == "-o" ]
+      then
+         cat $OVMS
+      elif [ $1 == "-a" ]
+      then
+         cat $RVMS
+         cat $OVMS
+      fi
+   fi
+
+   rm -f $RVMS $AVMS $OVMS
+}
+function vmisup {
+   vmcheckvbox || return 1;
+   # Return 1 if the VM is running
+   VMS=`mktemp -t vmx`
+   vmlist -r > $VMS
+   XECT=`echo "$1" | comm -1 -2 - $VMS`
+   if [ ! -z $XECT ]
+   then
+      return 1
+   else
+      return 0
+   fi
+}
+function vmip {
+   vmcheckvbox || return 1;
+   if [ -z "$1" ]
+   then
+      clr_blue "Which VM?"
+      return 1
+   fi
+   IP=`VBoxManage guestproperty get "$1" "/VirtualBox/GuestInfo/Net/0/V4/IP" | cut -d \  -f 2`
+   
+   if [ "$IP" == "value" ]
+   then
+      return 1
+   fi
+   echo $IP
+}
+function vmssh {
+   vmcheckvbox || return 1;
+   if [ -z "$1" ]
+   then
+      clr_blue "Which VM?"
+      return 1
+   fi
+   HOST=`vmip "$1"`
+   
+   if [ -z $HOST ]
+   then
+      clr_red "Problem connecting to $1"
+      return 1
+   fi
+
+   if [ ! -z $2 ]
+   then
+      HOST="$2@$HOST"
+   fi
+   clr_green "Connecting to $1 using `clr_escape "$HOST" $CLR_BROWN $CLR_BOLD`"
+   ssh $HOST
+}
+function vmrst {
+   if [ -z "$1" ]
+   then
+      clr_blue "Which VM?"
+      return 1
+   fi
+   vmisup "$1" || vmstop "$1"
+   VBoxManage snapshot "$1" restore clean
+   vmstart "$1"
+}
