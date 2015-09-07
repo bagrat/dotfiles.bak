@@ -69,9 +69,13 @@ map <Tab> gt
 map <S-Tab> gT
 
 map <C-x> :wq<CR>
+map <C-d> <C-x>
 
 cmap W w
 cmap Q q
 
-map <leader>py :w<CR>:!python %<CR>
+map <leader>py :w<CR>:silent !clear<CR>:silent !cat -n %<CR>:silent !echo "------------------------------------------"<CR>:!python -i %<CR>
 
+map <C-c><C-c> ggvGy<Esc>
+
+set clipboard=unnamed

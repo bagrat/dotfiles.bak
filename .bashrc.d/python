@@ -15,3 +15,11 @@ alias mkvenv3="mkvirtualenv --python=`which python3`"
 # pip
 export PIP_DOWNLOAD_CACHE="~/.pip/repository"
 
+function pyt {
+    TEMP="$(mktemp -t python).py"
+    CWD="$(PWD)"
+    cd /tmp
+    echo "$TEMP"
+    vim $TEMP
+    cd "$CWD"
+}
