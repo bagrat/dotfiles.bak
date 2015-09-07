@@ -2,7 +2,18 @@
 set background=dark
 colorscheme solarized
 
-set nocompatible
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'itchyny/lightline.vim'
+call vundle#end()
+
+
 filetype indent plugin on
 syntax on
  
@@ -11,7 +22,7 @@ syntax on
 let mapleader=','
 
 set wildmenu
-set showcmd
+" set showcmd
 set lazyredraw
 
 
@@ -79,8 +90,11 @@ cnoremap W w
 cnoremap Q q
 
 noremap <leader>py :w<CR>:!pyt_run %<CR>
-autocmd FileType python map <C-p> <leader>py<cr>
-autocmd FileType python imap <C-p> <Esc><leader>py<cr>i
+augroup pythons
+    autocmd!
+    autocmd FileType python nmap <C-p> <leader>py<cr>
+    autocmd FileType python imap <C-p> <Esc><leader>py<cr>i
+augroup END
 
 noremap <C-c><C-c> ggvGy<Esc>
 
