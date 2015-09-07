@@ -75,7 +75,11 @@ cmap W w
 cmap Q q
 
 map <leader>py :w<CR>:silent !clear<CR>:silent !cat -n %<CR>:silent !echo "------------------------------------------"<CR>:!python -i %<CR>
+autocmd FileType python map <C-p> <leader>py<CR>
+autocmd FileType python imap <C-p> <Esc><leader>pyi
 
 map <C-c><C-c> ggvGy<Esc>
 
 set clipboard=unnamed
+
+
