@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function assh {
+    MPORT="$((10000 + $RANDOM % 1000))"
+    echo "Using autossh: $MPORT"
+    autossh -M $MPORT $@
+}
+
+if [ `which autossh` ]
+then
+    alias ssh="assh"
+fi
+
