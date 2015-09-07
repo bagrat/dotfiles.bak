@@ -36,6 +36,8 @@ set number
 set notimeout ttimeout ttimeoutlen=200
 set visualbell
 set pastetoggle=<F9>
+set tw=0
+set clipboard=unnamed
  
 
 " Indentation Configuration
@@ -43,43 +45,52 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set tabstop=4
-
+set shell=bash\ --login
 
 " Mappings
-map Y yg$
+noremap Y yg$
 
-map <C-L> :nohl<CR>
-imap <C-L> :nohl<CR>
+noremap <C-L> :nohl<CR>
+inoremap <C-L> :nohl<CR>
 
-map <Up> gk
+noremap <Up> gk
 imap <Up> <Esc><Up>a
-map <Down> gj
+noremap <Down> gj
 imap <Down> <Esc><Down>a
-map <C-a> g0
+noremap <C-a> g0
 imap <C-a> <Esc><C-a>i
-map <C-e> g$
+noremap <C-e> g$
 imap <C-e> <Esc><C-e>a
 
 nnoremap <leader>s :mksession<CR>
 
-map <C-t> :tabnew<CR>:e 
+noremap <C-t> :tabnew<CR>:e 
 imap <C-t> <Esc><C-t>
 
-map <Tab> gt
-map <S-Tab> gT
+noremap <Tab> gt
+noremap <S-Tab> gT
 
-map <C-x> :wq<CR>
+noremap <C-x> :wq<CR>
+noremap <C-y> :q!<CR>
 map <C-d> <C-x>
 
-cmap W w
-cmap Q q
+cnoremap W w
+cnoremap Q q
 
-map <leader>py :w<CR>:silent !clear<CR>:silent !cat -n %<CR>:silent !echo "------------------------------------------"<CR>:!python -i %<CR>
-autocmd FileType python map <C-p> <leader>py<CR>
-autocmd FileType python imap <C-p> <Esc><leader>pyi
+noremap <leader>py :w<CR>:!pyt_run %<CR>
+autocmd FileType python map <C-p> <leader>py<cr>
+autocmd FileType python imap <C-p> <Esc><leader>py<cr>i
 
-map <C-c><C-c> ggvGy<Esc>
+noremap <C-c><C-c> ggvGy<Esc>
 
-set clipboard=unnamed
+vnoremap <Tab> >
+vnoremap <S-Tab> <
 
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>rv :w<cr>:source $MYVIMRC<cr>
+
+" Abbreviations
+iabbrev adn and
+iabbrev waht what
+iabbrev taht that
 
