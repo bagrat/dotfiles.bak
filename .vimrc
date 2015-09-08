@@ -11,6 +11,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'itchyny/lightline.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'jistr/vim-nerdtree-tabs'
 call vundle#end()
 
 
@@ -73,10 +76,27 @@ imap <C-a> <Esc><C-a>i
 noremap <C-e> g$
 imap <C-e> <Esc><C-e>a
 
+noremap <C-h> <C-w>h
+imap <C-h> <Esc><C-h>
+noremap <C-j> <C-w>j
+imap <C-j> <Esc><C-j>
+noremap <C-k> <C-w>k
+imap <C-k> <Esc><C-k>
+noremap <C-l> <C-w>l
+imap <C-l> <Esc><C-l>
+
+noremap + :vertical resize +2<CR>
+noremap _ :vertical resize -2<CR>
+noremap = :resize +2<CR>
+noremap - :resize -2<CR>
+
+
 nnoremap <leader>s :mksession<CR>
 
-noremap <C-t> :tabnew<CR>:e 
+noremap e :e 
+noremap <C-t> :tabnew<CR> 
 imap <C-t> <Esc><C-t>
+noremap <leader>t :NERDTreeTabsToggle<CR>
 
 noremap <Tab> gt
 noremap <S-Tab> gT
@@ -98,8 +118,10 @@ augroup END
 
 noremap <C-c><C-c> ggvGy<Esc>
 
-vnoremap <Tab> >
-vnoremap <S-Tab> <
+vnoremap > ><CR>gv 
+vnoremap < <<CR>gv 
+vmap <Tab> >
+vmap <S-Tab> <
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>rv :w<cr>:source $MYVIMRC<cr>
@@ -109,3 +131,5 @@ iabbrev adn and
 iabbrev waht what
 iabbrev taht that
 
+" NERDTree Configuration
+let g:nerdtree_tabs_open_on_console_startup=1
