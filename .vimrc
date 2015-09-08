@@ -103,7 +103,7 @@ noremap <S-Tab> gT
 
 noremap <C-x> :wq<CR>
 noremap <C-y> :q!<CR>
-noremap \ :qal!<CR>
+noremap <leader>Q :qal!<CR>
 map <C-d> <C-x>
 
 cnoremap W w
@@ -132,4 +132,4 @@ iabbrev waht what
 iabbrev taht that
 
 " NERDTree Configuration
-let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
