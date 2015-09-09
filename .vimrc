@@ -14,6 +14,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-fugitive'
 call vundle#end()
 
 
