@@ -65,8 +65,8 @@ set shell=bash\ --login
 " Mappings
 noremap Y yg$
 
-noremap <C-L> :nohl<CR>
-inoremap <C-L> :nohl<CR>
+noremap <leader>l :nohl<CR>
+imap <leader>l <Esc>:nohl<CR>
 
 noremap <Up> gk
 imap <Up> <Esc><Up>a
@@ -106,6 +106,9 @@ noremap <C-x> :wq<CR>
 noremap <C-y> :q!<CR>
 noremap <leader>Q :qal!<CR>
 map <C-d> <C-x>
+
+noremap <C-f> /\v
+imap <C-f> <Esc><C-f>
 
 cnoremap W w
 cnoremap Q q
