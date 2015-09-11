@@ -94,8 +94,7 @@ noremap - :resize -2<CR>
 
 nnoremap <leader>s :mksession<CR>
 
-noremap e :e 
-noremap <C-t> :tabnew<CR> 
+noremap <C-t> :tabnew<CR>:NERDTree<CR> 
 imap <C-t> <Esc><C-t>
 noremap <leader>t :NERDTreeTabsToggle<CR>
 
