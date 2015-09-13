@@ -119,6 +119,14 @@ augroup pythons
     autocmd FileType python imap <C-p> <Esc><leader>py<cr>i
 augroup END
 
+if &diff
+    noremap z<left> :diffget LO<cr>
+    noremap z<right> :diffget RE<cr>
+    noremap z<down> :diffget BA<cr>
+    noremap <cr> ]c
+    noremap \ [c 
+endif
+
 noremap <C-c><C-c> ggvGy<Esc>
 
 vnoremap > ><CR>gv 

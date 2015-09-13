@@ -28,8 +28,15 @@ function postpone {
    fi
 }
 
-bind -x '"\C-b": postpone'
-bind '"\C-p":"\C-b\C-e\n"'
+if [ -t 1 ]
+then
+    case "$-" in
+    *i*)
+        bind -x '"\C-b": postpone'
+        bind '"\C-p":"\C-b\C-e"'
+        ;;
+    esac
+fi
 
 function find_pids {
    ps -ef | grep $1 | grep -v grep | tr -s ' ' | cut -d ' ' -f 3
