@@ -120,6 +120,7 @@ augroup pythons
 augroup END
 
 if &diff
+    noremap z<up> :diffupdate<cr>
     noremap z<left> :diffget LO<cr>
     noremap z<right> :diffget RE<cr>
     noremap z<down> :diffget BA<cr>
