@@ -35,6 +35,9 @@ set showmatch
 set hlsearch
 set incsearch
 
+set exrc
+set secure
+
 set ttyfast
 set ignorecase
 set smartcase
@@ -54,6 +57,7 @@ set pastetoggle=<F9>
 set tw=0
 set clipboard=unnamed
  
+set makeprg=make\ -j9
 
 " Indentation Configuration
 set shiftwidth=4
@@ -62,20 +66,15 @@ set expandtab
 set tabstop=4
 set shell=bash\ --login
 
+" Max column configuration
+set colorcolumn=140
+highlight ColorColumn ctermbg=darkgray
+
 " Mappings
 noremap Y yg$
 
 noremap <leader>l :nohl<CR>
 imap <leader>l <Esc>:nohl<CR>
-
-noremap <Up> gk
-imap <Up> <Esc><Up>a
-noremap <Down> gj
-imap <Down> <Esc><Down>a
-noremap <C-a> g0
-imap <C-a> <Esc><C-a>i
-noremap <C-e> g$
-imap <C-e> <Esc><C-e>a
 
 noremap <C-h> <C-w>h
 imap <C-h> <Esc><C-h>
@@ -92,19 +91,24 @@ noremap = :resize +2<CR>
 noremap - :resize -2<CR>
 
 
-nnoremap <leader>s :mksession<CR>
+noremap <C-a> g0
+imap <C-a> <Esc><C-a>i
+noremap <C-e> g$
+imap <C-e> <Esc><C-e>i
 
-noremap <C-t> :tabnew<CR>:NERDTree<CR> 
+noremap <C-t> :tabnew<CR> 
 imap <C-t> <Esc><C-t>
 noremap <leader>t :NERDTreeTabsToggle<CR>
 
 noremap <Tab> gt
 noremap <S-Tab> gT
 
-noremap <C-x> :wq<CR>
 noremap <C-y> :q!<CR>
 noremap <leader>Q :qal!<CR>
 map <C-d> <C-x>
+
+noremap <leader>ss :setlocal spell spellang=en_us<cr>
+inoremap <leader>s <C-X>s
 
 noremap <C-f> /\v
 imap <C-f> <Esc><C-f>
@@ -112,12 +116,35 @@ imap <C-f> <Esc><C-f>
 cnoremap W w
 cnoremap Q q
 
+inoremap <C-Space> <C-x><C-o>
+
 noremap <leader>py :w<CR>:!pyt_run %<CR>
 augroup pythons
     autocmd!
     autocmd FileType python nmap <C-p> <leader>py<cr>
     autocmd FileType python imap <C-p> <Esc><leader>py<cr>i
 augroup END
+
+augroup text
+    autocmd!
+    autocmd FileType tex noremap <Up> gk
+    autocmd FileType tex imap <Up> <Esc><Up>a
+    autocmd FileType tex noremap <Down> gj
+    autocmd FileType tex imap <Down> <Esc><Down>a
+    autocmd FileType tex noremap <C-a> g0
+    autocmd FileType tex imap <C-a> <Esc><C-a>i
+    autocmd FileType tex noremap <C-e> g$
+    autocmd FileType tex imap <C-e> <Esc><C-e>a
+augroup END
+
+augroup C_Project
+    autocmd!
+    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+    autocmd BufRead,BufNewFile *.h,*.c let &path.="src/include,/usr/include/AL,"
+augroup END
+noremap <F5> :make<CR>
+noremap <F5> :make run<CR>
+
 
 if &diff
     noremap z<up> :diffupdate<cr>
