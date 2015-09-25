@@ -1,9 +1,13 @@
 #!/bin/bash
 ## Terminal color theme and promt format ##
-export PS_TEXT="\w\$ "
-export PS_COLORED="\[$CLR_ESC"$CLR_BROWN"m\]$PS_TEXT"
-export PS1=$PS_COLORED"\[\033[0m\]"
-export CLICOLOR=1
+
+if [[ "`hostname`" =~ ^n9code.* ]]
+then
+    export PS_TEXT="\w\$ "
+    export PS_COLORED="\[$CLR_ESC"$CLR_BROWN"m\]$PS_TEXT"
+    export PS1=$PS_COLORED"\[\033[0m\]"
+    export CLICOLOR=1
+fi
 
 function postpone {
    if [[ ${#READLINE_LINE} -gt 0 ]]
