@@ -5,14 +5,15 @@ PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
 export PATH
 
 # Python Virtual Environment
-export WORKON_HOME="~/.virtualenvs"
-VENVW=`which virtualenvwrapper.sh`
-export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/Current/bin/python
-export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
-[ ! "$VENVW" == "" ] && source $VENVW
-alias mkvenv3="mkvirtualenv --python=`which python3`"
+export WORKON_HOME=~/.virtualenvs
+VENVW=`which virtualenvwrapper.sh 2> /dev/null` 
+if [ ! "$VENVW" == "" ]
+then
+    source $VENVW
+    export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/Current/bin/python
+    export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
+fi
 
-# pip
 export PIP_DOWNLOAD_CACHE="~/.pip/repository"
 
 function pyt {

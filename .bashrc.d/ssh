@@ -6,7 +6,7 @@ function assh {
     autossh -M $MPORT $@
 }
 
-if [ `which autossh` ]
+if [ ! -z "`which autossh 2> /dev/null`" ]
 then
     alias ssh="assh"
 fi
