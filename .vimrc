@@ -94,7 +94,7 @@ noremap - :resize -2<CR>
 noremap <C-a> g0
 imap <C-a> <Esc><C-a>i
 noremap <C-e> g$
-imap <C-e> <Esc><C-e>i
+imap <C-e> <Esc><C-e>a
 
 noremap <C-t> :tabnew<CR> 
 imap <C-t> <Esc><C-t>

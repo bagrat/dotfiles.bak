@@ -1,1 +1,0 @@
-/Users/bagrat/drive/etc/dotfiles/././.bash_completion.d
