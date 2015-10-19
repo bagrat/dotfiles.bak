@@ -1,9 +1,17 @@
 #!/bin/bash
 
+ENABLE_AUTOSSH=0
+
 function assh {
-    MPORT="$((10000 + $RANDOM % 1000))"
-    echo "Using autossh: $MPORT"
-    autossh -M $MPORT $@
+    if [ $ENABLE_AUTOSSH -eq 1 ]
+    then
+        MPORT="$((10000 + $RANDOM % 1000))"
+        echo "Using autossh: $MPORT"
+        autossh -M $MPORT $@
+    else
+        ssh $@
+    fi
+    
 }
 
 if [ ! -z "`which autossh 2> /dev/null`" ]

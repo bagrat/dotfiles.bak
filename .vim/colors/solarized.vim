@@ -257,6 +257,7 @@ if (has("gui_running") && g:solarized_degrade == 0)
     let s:violet      = "#6c71c4"
     let s:blue        = "#268bd2"
     let s:cyan        = "#2aa198"
+    let s:linux       = "#363636"
     "let s:green       = "#859900" "original
     let s:green       = "#719e07" "experimental
 elseif (has("gui_running") && g:solarized_degrade == 1)
@@ -280,9 +281,11 @@ elseif (has("gui_running") && g:solarized_degrade == 1)
     let s:blue        = "#0087ff"
     let s:cyan        = "#00afaf"
     let s:green       = "#5f8700"
+    let s:linux       = "#363636"
 elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:vmode       = "cterm"
     let s:base03      = "8"
+"    let s:base03      = "234"
     let s:base02      = "0"
     let s:base01      = "10"
     let s:base00      = "11"
@@ -298,9 +301,11 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:blue        = "4"
     let s:cyan        = "6"
     let s:green       = "2"
+    let s:linux       = "237"
 elseif g:solarized_termcolors == 256
     let s:vmode       = "cterm"
     let s:base03      = "234"
+"    let s:base03      = "237"
     let s:base02      = "235"
     let s:base01      = "239"
     let s:base00      = "240"
@@ -316,6 +321,7 @@ elseif g:solarized_termcolors == 256
     let s:blue        = "33"
     let s:cyan        = "37"
     let s:green       = "64"
+    let s:linux       = "237"
 else
     let s:vmode       = "cterm"
     let s:bright      = "* term=bold cterm=bold"
@@ -351,7 +357,7 @@ else
     let s:blue        = "DarkBlue"      " 4
     let s:cyan        = "DarkCyan"      " 6
     let s:green       = "DarkGreen"     " 2
-
+    let s:linux       = "237"
 endif
 "}}}
 " Formatting options and null values for passthrough effect "{{{
