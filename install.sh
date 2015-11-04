@@ -43,5 +43,8 @@ do
 	install_file "$ROOT/$FILE" ~/$FILE
 done
 
+echo "Installing vim plugins"
+vim +PluginInstall +q +q
+
 echo "Done!"
 
