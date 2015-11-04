@@ -36,7 +36,7 @@ function install_file {
 
 FILES=(".bashrc" ".bashrc.d" ".bash_completion" ".bash_completion.d" ".inputrc"
        ".vimrc" ".vim"
-       ".tmux.conf")
+       ".tmux.conf" ".tmux")
 
 for FILE in ${FILES[@]}
 do
