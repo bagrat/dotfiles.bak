@@ -15,6 +15,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 
 
