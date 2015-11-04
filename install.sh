@@ -7,7 +7,7 @@ ROOT="`cd \"$(pwd)/$(dirname $0)\"; pwd`"
 
 function node_exists {
 	ls "$1" &> /dev/null;
-	if [ $? != 1 ]
+	if [ $? != 0 ]
 	then
 		echo 0
 	else
