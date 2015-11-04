@@ -60,3 +60,8 @@ function killinginthenameof {
 function inetmask {
    echo `while read y; do echo ${y%.*}".0/$(m=0; while read -n 1 x && [ $x = f ]; do m=$[m+4]; done < <(ifconfig en0 | awk '/mask/{$4=substr($4,3);print $4}'); echo $m )"; done < <(ifconfig en0 | awk '/inet[ ]/{print $2}')`
 }
+
+# TMUX
+export EDITOR='vim'
+
+alias tmux="TERM=screen-256color tmux"

@@ -15,7 +15,6 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
-Plugin 'vim-scripts/gui2term.py'
 call vundle#end()
 
 
@@ -35,8 +34,6 @@ set lazyredraw
 set showmatch
 set hlsearch
 set incsearch
-
-set title
 
 set exrc
 set secure
@@ -70,8 +67,8 @@ set tabstop=4
 set shell=bash\ --login
 
 " Max column configuration
-" set colorcolumn=140
-" highlight ColorColumn ctermbg=darkgray
+set colorcolumn=140
+highlight ColorColumn ctermbg=darkgray
 
 " Mappings
 noremap Y yg$

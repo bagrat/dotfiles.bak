@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ENABLE_AUTOSSH=0
+ENABLE_AUTOSSH=1
 
 function assh {
     if [ $ENABLE_AUTOSSH -eq 1 ]
