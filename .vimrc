@@ -1,82 +1,135 @@
-" Color scheme
-set background=dark
-colorscheme solarized
+set nocompatible
+filetype off
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'itchyny/lightline.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
-call vundle#end()
+Plugin 'mbbill/undotree'
 
+Plugin 'davidhalter/jedi-vim'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'scrooloose/syntastic'
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'santiycr/grin.vim'
+Plugin 'ntpeters/vim-better-whitespace'
+
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'jistr/vim-nerdtree-tabs'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+" Plugin 'nathanaelkane/vim-indent-guides'
+call vundle#end()
 
 filetype indent plugin on
 syntax on
- 
-" set cursorline
 
+augroup vimrc
+    au!
+    au BufWritePost .vimrc so $MYVIMRC
+augroup END
+
+autocmd! BufWritePost .vimrc source $MYVIMRC
 let mapleader=','
 
-set wildmenu
-" set showcmd
-set lazyredraw
+
+" Color scheme
+colorscheme solarized
+set background=dark
 
 
-" Search Configuration
-set showmatch
-set hlsearch
-set incsearch
-
-set exrc
-set secure
-
-set ttyfast
-set ignorecase
-set smartcase
+" General
+set fileformat=unix
+set number
+set modelines=0
+set hidden
+set history=1000
+set undoreload=10000
+set shell=bash
+set showbreak=>
+set splitbelow
+set splitright
 set backspace=indent,eol,start
-set autoindent
-set nostartofline
+" TODO: patch fonts
+" set fillchars=
+" set guifont=
+set autowrite
+set autoread
+set shiftround
+set title
+set cursorline
+set noshowmode
+set ttimeout
+set ttimeoutlen=50
+" TODO: test this
+" set viminfo='100,<1000100,%,:5
+set scrolloff=4
+set completeopt=longest,menuone,preview,noinsert
 set ruler
 set laststatus=2
-set confirm
 set t_vb=
-set mouse=a
 set cmdheight=1
-set number
-set notimeout ttimeout ttimeoutlen=200
-set visualbell
 set pastetoggle=<F9>
-set tw=0
 set clipboard=unnamed
- 
-set makeprg=make\ -j9
 
-" Indentation Configuration
-set shiftwidth=4
-set softtabstop=4
+
+" Tabs & Spaces
 set expandtab
-set tabstop=4
-set shell=bash\ --login
+set smarttab
+set shiftwidth=4
+set tabstop=8
+set softtabstop=4
+au BufNewFile,BufReadPost *.css,*.html,*.js,*.json set shiftwidth=2
 
-" Max column configuration
-set colorcolumn=140
-highlight ColorColumn ctermbg=darkgray
 
-" Mappings
-noremap Y yg$
+" Wildmenu
+set wildmenu
+set wildmode=full
+set wildignore+=.hg,.git,.svn
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest
+set wildignore+=*.sw?
+set wildignore+=*.DS_Store
+set wildignore+=migrations
+set wildignore+=*.pyc
+set wildignore+=*.orig
 
-noremap <leader>l :nohl<CR>
-imap <leader>l <Esc>:nohl<CR>
 
+" Line wrapping and display
+set wrap
+set linebreak  " default `breakat` is pretty OK
+set textwidth=80
+set formatoptions+=qrn1
+set foldlevel=0
+
+
+" Search
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+
+
+" Backups
+set undodir=~/.vim/tmp/undo//
+set directory=~/.vim/tmp/swap//
+set undofile
+set noswapfile
+
+
+" Auto commands
+autocmd InsertLeave * :pc
+
+
+" Key Mappings
 noremap <C-h> <C-w>h
 imap <C-h> <Esc><C-h>
 noremap <C-j> <C-w>j
@@ -86,13 +139,12 @@ imap <C-k> <Esc><C-k>
 noremap <C-l> <C-w>l
 imap <C-l> <Esc><C-l>
 
-noremap + :vertical resize +2<CR>
-noremap _ :vertical resize -2<CR>
-noremap = :resize +2<CR>
-noremap - :resize -2<CR>
+noremap L :vertical resize +2<CR>:echo<CR>
+noremap H :vertical resize -2<CR>:echo<CR>
+noremap K :resize +2<CR>:echo<CR>
+noremap J :resize -2<CR>:echo<CR>
 
-
-noremap <C-a> g0
+noremap <C-a> g^
 imap <C-a> <Esc><C-a>i
 noremap <C-e> g$
 imap <C-e> <Esc><C-e>a
@@ -104,28 +156,29 @@ noremap <leader>t :NERDTreeTabsToggle<CR>
 noremap <Tab> gt
 noremap <S-Tab> gT
 
-noremap <C-y> :q!<CR>
+noremap <leader>q :q!<CR>
 noremap <leader>Q :qal!<CR>
-map <C-d> <C-x>
 
 noremap <leader>ss :setlocal spell spellang=en_us<cr>
 inoremap <leader>s <C-X>s
+noremap <leader>l :nohl<CR>
 
-noremap <C-f> /\v
-imap <C-f> <Esc><C-f>
+" noremap <C-f> /\v
+" inoremap <C-Space> <C-x><C-o>
 
-cnoremap W w
-cnoremap Q q
+" Stay selected in visual mode
+vnoremap > ><CR>gv
+vnoremap < <<CR>gv
 
-inoremap <C-Space> <C-x><C-o>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>rv :w<cr>:source $MYVIMRC<cr>
 
-noremap <leader>py :w<CR>:!pyt_run %<CR>
-augroup pythons
-    autocmd!
-    autocmd FileType python nmap <C-p> <leader>py<cr>
-    autocmd FileType python imap <C-p> <Esc><leader>py<cr>i
-augroup END
+" Copy the while file contents
+noremap <C-c><C-c> gg0vG$y<Esc>
+" Run the python file and start interpreter
+autocmd FileType python <leader>py :w<CR>:!pyt_run %<CR>
 
+" This is for editing test files with long wrapping lines
 augroup text
     autocmd!
     autocmd FileType tex noremap <Up> gk
@@ -138,38 +191,13 @@ augroup text
     autocmd FileType tex imap <C-e> <Esc><C-e>a
 augroup END
 
-augroup C_Project
-    autocmd!
-    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
-    autocmd BufRead,BufNewFile *.h,*.c let &path.="src/include,/usr/include/AL,"
-augroup END
-noremap <F5> :make<CR>
-noremap <F5> :make run<CR>
-
-
+" Easy conflict resolution
 if &diff
     noremap z<up> :diffupdate<cr>
     noremap z<left> :diffget LO<cr>
     noremap z<right> :diffget RE<cr>
     noremap z<down> :diffget BA<cr>
     noremap <cr> ]c
-    noremap \ [c 
+    noremap \ [c
 endif
 
-noremap <C-c><C-c> ggvGy<Esc>
-
-vnoremap > ><CR>gv 
-vnoremap < <<CR>gv 
-vmap <Tab> >
-vmap <S-Tab> <
-
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>rv :w<cr>:source $MYVIMRC<cr>
-
-" Abbreviations
-iabbrev adn and
-iabbrev waht what
-iabbrev taht that
-
-" NERDTree Configuration
-" let g:nerdtree_tabs_open_on_console_startup=1
