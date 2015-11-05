@@ -19,7 +19,7 @@ Plugin 'santiycr/grin.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'albfan/nerdtree-git-plugin'
 Plugin 'jistr/vim-nerdtree-tabs'
 
 Plugin 'tpope/vim-fugitive'
@@ -151,7 +151,10 @@ imap <C-e> <Esc><C-e>a
 
 noremap <C-t> :tabnew<CR> 
 imap <C-t> <Esc><C-t>
+
+" NERDTree Configuration
 noremap <leader>t :NERDTreeTabsToggle<CR>
+let NERDTreeShowHidden=1
 
 noremap <Tab> gt
 noremap <S-Tab> gT
@@ -176,7 +179,7 @@ nnoremap <leader>rv :w<cr>:source $MYVIMRC<cr>
 " Copy the while file contents
 noremap <C-c><C-c> gg0vG$y<Esc>
 " Run the python file and start interpreter
-autocmd FileType python <leader>py :w<CR>:!pyt_run %<CR>
+autocmd FileType python noremap <leader>py :w<CR>:!pyt_run %<CR>
 
 " This is for editing test files with long wrapping lines
 augroup text
@@ -241,7 +244,7 @@ function! LightLineFugitive()
     if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
       let mark = ''  " edit here for cool mark
       let _ = fugitive#head()
-      return strlen(_) ? mark._ : ''
+      return strlen(_) ? "\u2b60 ".mark._ : ''
     endif
   catch
   endtry
@@ -283,9 +286,37 @@ endfunction
 
 augroup AutoSyntastic
   autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+  autocmd BufWritePost *.py,*.c,*.cpp call s:syntastic()
 augroup END
 function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
+
+function! RespectGitignore()
+    let ignores_raw = readfile(".gitignore")
+    let ignores_proc = []
+    for ig in ignores_raw
+        echom ig
+        if ig =~ "^!"
+            let ig = "(?!".ig[1:].")"
+        endif
+        if ig =~ '\*\*'
+            let ig = substitute(ig, "\\*\\*", "\\*", "g")
+        endif
+        if ig =~ '\*'
+            let ig = substitute(ig, "\\*", "\\.\\*", "g")
+        endif
+        echom ig
+        call add(ignores_proc, ig)
+    endfor
+    let g:NERDTreeIgnore = []
+    for ig in ignores_proc
+        call add(g:NERDTreeIgnore, ig)
+    endfor
+endfunction
+
+" call RespectGitignore()
+" let NERDTreeRespectWildIgnore = 1
+" set wildignore+=\.vim/bundle/.*
+
