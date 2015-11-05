@@ -31,12 +31,35 @@ call vundle#end()
 filetype indent plugin on
 syntax on
 
+let g:lightline = {
+            \ 'colorscheme': 'solarized',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'fugitive': 'LightLineFugitive',
+            \ },
+            \ 'component': {
+            \   'readonly': '%{&readonly?"\u2b64":""}',
+            \ },
+            \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+            \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+            \ }
+
+function! LightLineFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? "\u2b60 "._ : ''
+  endif
+  return ''
+endfunction
+
 augroup vimrc
     au!
-    au BufWritePost .vimrc so $MYVIMRC
+    au BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
 
-autocmd! BufWritePost .vimrc source $MYVIMRC
 let mapleader=','
 
 
@@ -46,6 +69,8 @@ set background=dark
 
 
 " General
+set encoding=utf-8
+scriptencoding utf-8
 set fileformat=unix
 set number
 set modelines=0

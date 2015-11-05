@@ -64,4 +64,4 @@ function inetmask {
 # TMUX
 export EDITOR='vim'
 
-alias tmux="TERM=screen-256color tmux"
+export TERM=xterm-256color
