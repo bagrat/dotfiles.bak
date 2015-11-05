@@ -18,7 +18,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'santiycr/grin.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 
-Plugin 'scrooloose/nerdtree.git'
+Plugin 'albfan/nerdtree'
 Plugin 'albfan/nerdtree-git-plugin'
 Plugin 'jistr/vim-nerdtree-tabs'
 
@@ -293,30 +293,16 @@ function! s:syntastic()
   call lightline#update()
 endfunction
 
-function! RespectGitignore()
-    let ignores_raw = readfile(".gitignore")
-    let ignores_proc = []
-    for ig in ignores_raw
-        echom ig
-        if ig =~ "^!"
-            let ig = "(?!".ig[1:].")"
-        endif
-        if ig =~ '\*\*'
-            let ig = substitute(ig, "\\*\\*", "\\*", "g")
-        endif
-        if ig =~ '\*'
-            let ig = substitute(ig, "\\*", "\\.\\*", "g")
-        endif
-        echom ig
-        call add(ignores_proc, ig)
-    endfor
-    let g:NERDTreeIgnore = []
-    for ig in ignores_proc
-        call add(g:NERDTreeIgnore, ig)
-    endfor
-endfunction
 
-" call RespectGitignore()
-" let NERDTreeRespectWildIgnore = 1
-" set wildignore+=\.vim/bundle/.*
+let g:NERDTreeIndicatorMap = {
+            \ "Modified"  : "*",
+            \ "Staged"    : "+",
+            \ "Untracked" : "-",
+            \ "Renamed"   : ">",
+            \ "Unmerged"  : "=",
+            \ "Deleted"   : "x",
+            \ "Dirty"     : "#",
+            \ "Clean"     : "v",
+            \ "Unknown"   : "?"
+            \ }
 
