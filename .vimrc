@@ -60,7 +60,6 @@ set splitright
 set backspace=indent,eol,start
 " TODO: patch fonts
 " set fillchars=
-" set guifont=
 set autowrite
 set autoread
 set shiftround
@@ -157,8 +156,8 @@ noremap <leader>t :NERDTreeTabsToggle<CR>
 noremap <Tab> gt
 noremap <S-Tab> gT
 
-noremap <leader>q :q!<CR>
-noremap <leader>Q :qal!<CR>
+noremap <leader>q :q!<CR><Esc>
+noremap <leader>Q :qal!<CR><Esc>
 
 noremap <leader>ss :setlocal spell spellang=en_us<cr>
 inoremap <leader>s <C-X>s
@@ -224,20 +223,69 @@ let g:lightline = {
             \ },
             \ 'component_function': {
             \   'fugitive': 'LightLineFugitive',
+            \   'filename': 'LightLineFilename',
+            \   'mode': 'LightLineMode',
             \ },
             \ 'component': {
             \   'readonly': '%{&readonly?"\u2b64":""}',
+            \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":""}'
             \ },
             \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
             \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
             \ }
 
+let g:silent_types = ['nerdtree', 'fugitiveblame']
+
 function! LightLineFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? "\u2b60 "._ : ''
-  endif
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let _ = fugitive#head()
+      return strlen(_) ? mark._ : ''
+    endif
+  catch
+  endtry
   return ''
 endfunction
 
+function! LightLineModified()
+      return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  endfunction
 
+  function! LightLineReadonly()
+        return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! LightLineFilename()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? '' :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ &ft == 'unite' ? unite#get_status_string() :
+        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineMode()
+    let fname = expand('%:t')
+    return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ &ft == 'unite' ? 'Unite' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ &ft == 'vimshell' ? 'VimShell' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
