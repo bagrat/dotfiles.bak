@@ -1,3 +1,5 @@
+let g:init_dir = getcwd()
+
 set nocompatible
 filetype off
 
@@ -172,6 +174,8 @@ noremap <leader>l :nohl<CR>
 " Stay selected in visual mode
 vnoremap > ><CR>gv
 vnoremap < <<CR>gv
+map <leader>/ gcc
+vmap <leader>/ gc
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>rv :w<cr>:source $MYVIMRC<cr>
@@ -179,7 +183,11 @@ nnoremap <leader>rv :w<cr>:source $MYVIMRC<cr>
 " Copy the while file contents
 noremap <C-c><C-c> gg0vG$y<Esc>
 " Run the python file and start interpreter
-autocmd FileType python noremap <leader>py :w<CR>:!pyt_run %<CR>
+augroup Python
+    autocmd!
+    autocmd FileType python noremap <leader>py :w<CR>:!pyt_run %<CR>
+    autocmd FileType python VirtualEnvActivate
+augroup END
 
 " This is for editing test files with long wrapping lines
 augroup text
@@ -209,11 +217,11 @@ let g:lightline = {
             \ 'active': {
             \   'left': [ 
             \       [ 'mode', 'paste' ],
-            \       [ 'fugitive', 'readonly', 'filename', 'modified' ]
+            \       [ 'fugitive', 'venv',  'readonly', 'filename', 'modified' ]
             \   ],
             \   'right': [
             \       ['lineinfo'],
-            \       ['percent']
+            \       ['percent'],
             \   ],
             \ },
             \ 'tabline': {
@@ -228,17 +236,15 @@ let g:lightline = {
             \   'fugitive': 'LightLineFugitive',
             \   'filename': 'LightLineFilename',
             \   'mode': 'LightLineMode',
+            \   'venv': 'LightLineVenv',
             \ },
             \ 'component': {
             \   'readonly': '%{&readonly?"\u2b64":""}',
-            \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":""}'
+            \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":""}',
             \ },
             \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-            \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+            \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
             \ }
-
-let g:silent_types = ['nerdtree', 'fugitiveblame']
-
 function! LightLineFugitive()
   try
     if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
@@ -284,14 +290,22 @@ function! LightLineMode()
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.py,*.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
+function! LightLineVenv()
+    if &filetype != 'python'
+        return ''
+    endif
+    let venv = virtualenv#statusline()
+    return strlen(venv) ? "\u24d4 ".venv : ""
 endfunction
+
+" augroup AutoSyntastic
+"   autocmd!
+"   autocmd BufWritePost,BufReadPost *.py,*.c,*.cpp call s:syntastic()
+" augroup END
+" function! s:syntastic()
+"   SyntasticCheck
+"   call lightline#update()
+" endfunction
 
 
 let g:NERDTreeIndicatorMap = {
@@ -320,3 +334,30 @@ function! GotoInSplit()
     let g:jedi#use_tabs_not_buffers = 1
 endfunction
 map <leader>B :call GotoInSplit()<CR>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+
+
+" Grin configuration
+function! g:NNfind(pattern)
+    execute "tabnew"
+    execute "Grin '".a:pattern."' '".g:init_dir."'"
+    " TODO: change title to Search Results
+endfunction
+command! -nargs=* NNFind call g:NNfind('<args>')
+noremap <leader>f :NNFind 
+noremap <leader>F :NNFind <C-R><C-W><CR>
+
+augroup QuickFix
+    autocmd!
+    autocmd FileType qf hi Search cterm=NONE ctermfg=NONE ctermbg=NONE
+    autocmd FileType qf hi Cursor ctermfg=8 ctermbg=8
+augroup END
+
