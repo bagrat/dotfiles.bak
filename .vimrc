@@ -141,10 +141,12 @@ imap <C-k> <Esc><C-k>
 noremap <C-l> <C-w>l
 imap <C-l> <Esc><C-l>
 
-noremap <leader>L :vertical resize +2<CR>:echo<CR>
-noremap <leader>H :vertical resize -2<CR>:echo<CR>
-noremap <leader>K :resize +2<CR>:echo<CR>
-noremap <leader>J :resize -2<CR>:echo<CR>
+noremap <leader>= =
+
+noremap = :vertical resize +2<CR>:echo<CR>
+noremap - :vertical resize -2<CR>:echo<CR>
+noremap + :resize +2<CR>:echo<CR>
+noremap _ :resize -2<CR>:echo<CR>
 
 noremap <C-a> g^
 imap <C-a> <Esc><C-a>i
@@ -362,3 +364,11 @@ augroup QuickFix
     autocmd FileType qf hi Cursor ctermfg=8 ctermbg=8
 augroup END
 
+
+" CtrlP Configuration
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_by_filename = 1
+
+
+" Here goes git
