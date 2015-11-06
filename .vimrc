@@ -141,10 +141,10 @@ imap <C-k> <Esc><C-k>
 noremap <C-l> <C-w>l
 imap <C-l> <Esc><C-l>
 
-noremap L :vertical resize +2<CR>:echo<CR>
-noremap H :vertical resize -2<CR>:echo<CR>
-noremap K :resize +2<CR>:echo<CR>
-noremap J :resize -2<CR>:echo<CR>
+noremap <leader>L :vertical resize +2<CR>:echo<CR>
+noremap <leader>H :vertical resize -2<CR>:echo<CR>
+noremap <leader>K :resize +2<CR>:echo<CR>
+noremap <leader>J :resize -2<CR>:echo<CR>
 
 noremap <C-a> g^
 imap <C-a> <Esc><C-a>i
