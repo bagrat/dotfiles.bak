@@ -202,7 +202,7 @@ noremap <C-c><C-c> gg0vG$y<Esc>
 augroup Python
     autocmd!
     autocmd FileType python noremap <leader>py :w<CR>:!pyt_run %<CR>
-    autocmd FileType python VirtualEnvActivate
+    " autocmd FileType python VirtualEnvActivate
 augroup END
 
 " This is for editing test files with long wrapping lines
@@ -310,7 +310,11 @@ function! LightLineVenv()
     if &filetype != 'python'
         return ''
     endif
-    let venv = virtualenv#statusline()
+    try
+        let venv = virtualenv#statusline()
+    catch
+        let venv = ''
+    endtry
     return strlen(venv) ? "\u24d4 ".venv : ""
 endfunction
 
