@@ -1,4 +1,4 @@
 **/*.swp
 !.vim/bundle/Vundle.vim*
 .vim/bundle/**
-
+**/.netrwhlist

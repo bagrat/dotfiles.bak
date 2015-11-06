@@ -157,6 +157,20 @@ imap <C-t> <Esc><C-t>
 " NERDTree Configuration
 noremap <leader>t :NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+
+let g:NERDTreeIndicatorMap = {
+            \ "Modified"  : "*",
+            \ "Staged"    : "+",
+            \ "Untracked" : "-",
+            \ "Renamed"   : ">",
+            \ "Unmerged"  : "=",
+            \ "Deleted"   : "x",
+            \ "Dirty"     : "#",
+            \ "Clean"     : "v",
+            \ "Unknown"   : "?"
+            \ }
+
 
 noremap <Tab> gt
 noremap <S-Tab> gT
@@ -205,7 +219,7 @@ augroup END
 " Easy conflict resolution
 if &diff
     noremap z<up> :diffupdate<cr>
-    noremap z<left> :diffget LO<cr>
+noremap z<left> :diffget LO<cr>
     noremap z<right> :diffget RE<cr>
     noremap z<down> :diffget BA<cr>
     noremap <cr> ]c
@@ -306,19 +320,6 @@ endfunction
 "   SyntasticCheck
 "   call lightline#update()
 " endfunction
-
-
-let g:NERDTreeIndicatorMap = {
-            \ "Modified"  : "*",
-            \ "Staged"    : "+",
-            \ "Untracked" : "-",
-            \ "Renamed"   : ">",
-            \ "Unmerged"  : "=",
-            \ "Deleted"   : "x",
-            \ "Dirty"     : "#",
-            \ "Clean"     : "v",
-            \ "Unknown"   : "?"
-            \ }
 
 " Jedi-vim Configuration
 " TODO: deal with signature suggestion

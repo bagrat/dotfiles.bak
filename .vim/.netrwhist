@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/bagrat/Google Drive/etc/dotfiles/.vim/bundle/lightline.vim/autoload'
 let g:netrw_dirhist_2='/Users/bagrat/Google Drive/etc/dotfiles/.vim/bundle/lightline.vim/autoload/lightline'
 let g:netrw_dirhist_3='/Users/bagrat/Google Drive/etc/dotfiles/.vim/bundle/lightline.vim/autoload/lightline/colorscheme'
 let g:netrw_dirhist_4='/Users/bagrat/Google Drive/etc/dotfiles/.vim/bundle/lightline.vim/autoload/lightline'
 let g:netrw_dirhist_5='/Users/bagrat/Google Drive/etc/dotfiles/.vim'
+let g:netrw_dirhist_6='/Users/bagrat/Google Drive/dev/tte/backend'
