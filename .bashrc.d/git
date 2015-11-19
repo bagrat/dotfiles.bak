@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export GITAWAREPROMPT=~/.bashrc.d/git-aware-prompt
+source "${GITAWAREPROMPT}/main.sh"

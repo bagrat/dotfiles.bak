@@ -6,3 +6,6 @@
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 
+[submodule ".bashrc.d/git-aware-prompt"]
+	path = .bashrc.d/git-aware-prompt
+	url = git://github.com/jimeh/git-aware-prompt.git

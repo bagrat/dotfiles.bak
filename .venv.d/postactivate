@@ -1,5 +1,6 @@
 #!/bin/bash
 
-echo helllo
+VENV_NAME="`basename $VIRTUAL_ENV`"
+COLORED_VENV_NAME="`clr_green $VENV_NAME`"
 
-export PS1="\($VIRTUAL_ENV\)aaaa $PS1"
+export PS1="$COLORED_VENV_NAME | $PS1"

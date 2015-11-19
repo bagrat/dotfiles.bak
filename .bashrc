@@ -1,6 +1,9 @@
 for file in ~/.bashrc.d/*
 do
-   source $file
+    if [ -f "$file" ]
+    then
+        source $file
+    fi
 done
 source ~/.bash_completion
 
