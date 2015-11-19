@@ -4,12 +4,13 @@
 if [[ "`hostname`" =~ ^n9code.* ]]
 then
     export PS_TEXT='\w\$ '
-    export PS_COLORED="\[$CLR_ESC"$CLR_BROWN"m\]$PS_TEXT"
-    export PS1="\$(git_prompt)|"$PS_COLORED"\[\033[0m\]"
-    export CLICOLOR=1
 else
-    export PS1='\u@\h:\w\$ '
+    export PS_TEXT='\u@\h:\w\$ '
 fi
+
+export PS_COLORED="\[$CLR_ESC"$CLR_BROWN"m\]$PS_TEXT"
+export PS1="\$(git_prompt)"$PS_COLORED"\[\033[0m\]"
+export CLICOLOR=1
 
 function postpone {
    if [[ ${#READLINE_LINE} -gt 0 ]]

@@ -8,6 +8,7 @@ function git_prompt {
     then
         BRANCH=`echo $git_branch | sed "s/^(\(.*\))$/\1/"`
         DIRTY_BRANCH="$BRANCH$git_dirty"
+        PIPEC="|"
     fi
-    echo "`clr_blue $DIRTY_BRANCH`"
+    echo "`clr_blue $DIRTY_BRANCH`$PIPEC"
 }
