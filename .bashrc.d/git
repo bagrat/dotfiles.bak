@@ -2,3 +2,12 @@
 
 export GITAWAREPROMPT=~/.bashrc.d/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
+
+function git_prompt {
+    if [ ! -z "$git_branch" ]
+    then
+        BRANCH=`echo $git_branch | sed "s/^(\(.*\))$/\1/"`
+        DIRTY_BRANCH="$BRANCH$git_dirty"
+    fi
+    echo "`clr_blue $DIRTY_BRANCH`"
+}

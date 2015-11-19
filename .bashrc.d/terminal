@@ -5,7 +5,7 @@ if [[ "`hostname`" =~ ^n9code.* ]]
 then
     export PS_TEXT='\w\$ '
     export PS_COLORED="\[$CLR_ESC"$CLR_BROWN"m\]$PS_TEXT"
-    export PS1=$PS_COLORED"\[\033[0m\]"
+    export PS1="\$(git_prompt)|"$PS_COLORED"\[\033[0m\]"
     export CLICOLOR=1
 else
     export PS1='\u@\h:\w\$ '

@@ -6,7 +6,7 @@ function directory_to_titlebar {
    # in a default length Terminal title bar).
 
    # Get the current working directory.  We'll format it in $dir.
-   local dir="$PWD"     
+   local dir="$PWD"
 
    # Substitute a leading path that's in $HOME for "~"
    if [[ "$HOME" == ${dir:0:${#HOME}} ]] ; then
@@ -14,22 +14,22 @@ function directory_to_titlebar {
    fi
 
    # Append a trailing slash if it's not there already.
-   if [[ ${dir:${#dir}-1} != "/" ]] ; then 
+   if [[ ${dir:${#dir}-1} != "/" ]] ; then
       dir="$dir/"
    fi
 
    # Truncate if we're too long.
    # We preserve the leading '/' or '~/', and substitute
    # ellipses for some directories in the middle.
-   if [[ "$dir" =~ (~){0,1}/.*(.{${pwd_length}}) ]] ; then  
+   if [[ "$dir" =~ (~){0,1}/.*(.{${pwd_length}}) ]] ; then
       local tilde=${BASH_REMATCH[1]}
       local directory=${BASH_REMATCH[2]}
 
-      # At this point, $directory is the truncated end-section of the 
+      # At this point, $directory is the truncated end-section of the
       # path.  We will now make it only contain full directory names
       # (e.g. "ibrary/Mail" -> "/Mail").
       if [[ "$directory" =~ [^/]*(.*) ]] ; then
-         directory=${BASH_REMATCH[1]} 
+         directory=${BASH_REMATCH[1]}
       fi
 
       # Can't work out if it's possible to use the Unicode ellipsis,
@@ -39,7 +39,7 @@ function directory_to_titlebar {
       dir="$tilde/...$directory"
    fi
 
-   # Don't embed $dir directly in printf's first argument, because it's 
+   # Don't embed $dir directly in printf's first argument, because it's
    # possible it could contain printf escape sequences.
    printf "\033]0;%s\007" "$dir"
 }
