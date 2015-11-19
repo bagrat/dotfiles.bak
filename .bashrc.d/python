@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Python Virtual Environment
 export WORKON_HOME=~/.virtualenvs
@@ -32,3 +33,6 @@ function pyt_run {
         echo "Supply the file to run!"
     fi
 }
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+ln -sf "$HOME/.venv.d/postactivate" "$WORKON_HOME/postactivate"

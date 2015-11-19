@@ -17,7 +17,7 @@ Plugin 'scrooloose/syntastic'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
-Plugin 'santiycr/grin.vim'
+Plugin 'rking/ag.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 
 Plugin 'albfan/nerdtree'
@@ -26,6 +26,9 @@ Plugin 'jistr/vim-nerdtree-tabs'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+
+Plugin 'n9code/pydeadbeef.vim'
+Plugin 'vim-scripts/Conque-GDB'
 
 " Plugin 'nathanaelkane/vim-indent-guides'
 call vundle#end()
@@ -78,7 +81,7 @@ set ruler
 set laststatus=2
 set t_vb=
 set cmdheight=1
-set pastetoggle=<F9>
+set pastetoggle=<F2>
 set clipboard=unnamed
 
 
@@ -355,7 +358,7 @@ let g:syntastic_check_on_wq = 1
 " Grin configuration
 function! g:NNfind(pattern)
     execute "tabnew"
-    execute "Grin '".a:pattern."' '".g:init_dir."'"
+    execute "Ag '".a:pattern."' '".g:init_dir."'"
     " TODO: change title to Search Results
 endfunction
 command! -nargs=* NNFind call g:NNfind('<args>')
@@ -375,4 +378,5 @@ let g:ctrlp_open_new_file = 't'
 let g:ctrlp_by_filename = 1
 
 
+let g:ConqueGdb_Leader = '<leader>;'
 " Here goes git

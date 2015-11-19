@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo helllo
+
+export PS1="\($VIRTUAL_ENV\)aaaa $PS1"
