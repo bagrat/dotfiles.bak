@@ -18,7 +18,7 @@ function ps_update {
     GIT_PROMPT="`git_prompt`"
     export PS1="${VENV_PROMPT}${GIT_PROMPT}${PS_COLORED}"
 }
-export PROMPT_COMMAND="$PROMPT_COMMAND; ps_update"
+export PROMPT_COMMAND="$PROMPT_COMMAND ps_update"
 
 function postpone {
    if [[ ${#READLINE_LINE} -gt 0 ]]
