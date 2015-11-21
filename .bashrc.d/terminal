@@ -8,8 +8,10 @@ else
     export PS_TEXT='\u@\h:\w\$ '
 fi
 
-export PS_COLORED="\[$CLR_ESC"$CLR_BROWN"m\]$PS_TEXT"
-export PS1="\$(git_prompt)"$PS_COLORED"\[\033[0m\]"
+# export PS_COLORED="\[${CLR_ESC}${CLR_BROWN}m\]${PS_TEXT}"
+export PS_COLORED="`wrap_brown \"${PS_TEXT}\"`"
+# export PS1="${PS_COLORED}\[\033[0m\]"
+export PS1="\[\$(venv_prompt)\$(git_prompt)${PS_COLORED}\]"
 export CLICOLOR=1
 
 function postpone {

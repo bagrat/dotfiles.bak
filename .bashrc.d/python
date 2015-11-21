@@ -36,3 +36,12 @@ function pyt_run {
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 ln -sf "$HOME/.venv.d/postactivate" "$WORKON_HOME/postactivate"
+
+function venv_prompt {
+    if [ ! -z "$VENV_NAME" ]
+    then
+        VENV_PROMPT="`wrap_green $VENV_NAME`"
+        PIPEC="|"
+    fi
+    echo -e "${VENV_PROMPT}${PIPEC}"
+}

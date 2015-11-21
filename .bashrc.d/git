@@ -10,5 +10,5 @@ function git_prompt {
         DIRTY_BRANCH="$BRANCH$git_dirty"
         PIPEC="|"
     fi
-    echo "`clr_blue $DIRTY_BRANCH`$PIPEC"
+    echo -e "`wrap_blue $DIRTY_BRANCH`$PIPEC"
 }
