@@ -1,6 +1,5 @@
 #!/bin/bash
 
-CLR_BLACK="$(tput setaf 30)"
 CLR_RED="$(tput setaf 1)"
 CLR_GREEN="$(tput setaf 2)"
 CLR_BROWN="$(tput setaf 3)"
@@ -23,30 +22,35 @@ CLR_WHITEB="$CLR_WHITE$CLR_BOLD"
 
 CLR_ESC="\033["
 CLR_CSE=""
-CLR_ESC_PS="\[\033["
-CLR_CSE_PS="\]"
+CLR_ESC_PS="\\[\033["
+CLR_CSE_PS="\\]"
 
 function wrap_clr {
-    result="$1"
-    clr="$2"
-
-    result="${CLR_ESC}${clr}${CLR_CSE}${result}${CLR_ESC}${CLR_RESET}${CLR_CSE}"
+    local is_ps="$1"
+    local result="$2"
+    local clr="$3"
+    if [ "$is_ps" -eq "0" ]
+    then
+        result="${CLR_ESC}${clr}${CLR_CSE}${result}${CLR_ESC}${CLR_RESET}${CLR_CSE}"
+    else
+        result="${CLR_ESC_PS}${clr}${CLR_CSE_PS}${result}${CLR_ESC_PS}${CLR_RESET}${CLR_CSE_PS}"
+    fi
 
     echo -e "$result"
 }
 
 function echo_clr {
-    echo -e "`wrap_clr $*`"
+    echo -e "`wrap_clr 0 $*`"
 }
 
-function wrap_black   { wrap_clr "$1" $CLR_BLACK; }
-function wrap_green   { wrap_clr "$1" $CLR_GREEN; }
-function wrap_red     { wrap_clr "$1" $CLR_RED; }
-function wrap_brown   { wrap_clr "$1" $CLR_BROWN; }
-function wrap_blue    { wrap_clr "$1" $CLR_BLUE; }
-function wrap_magenta { wrap_clr "$1" $CLR_MAGENTA; }
-function wrap_cyan    { wrap_clr "$1" $CLR_CYAN; }
-function wrap_white   { wrap_clr "$1" $CLR_WHITE; }
+function wrap_black   { wrap_clr "$1" "$2" $CLR_BLACK; }
+function wrap_green   { wrap_clr "$1" "$2" $CLR_GREEN; }
+function wrap_red     { wrap_clr "$1" "$2" $CLR_RED; }
+function wrap_brown   { wrap_clr "$1" "$2" $CLR_BROWN; }
+function wrap_blue    { wrap_clr "$1" "$2" $CLR_BLUE; }
+function wrap_magenta { wrap_clr "$1" "$2" $CLR_MAGENTA; }
+function wrap_cyan    { wrap_clr "$1" "$2" $CLR_CYAN; }
+function wrap_white   { wrap_clr "$1" "$2" $CLR_WHITE; }
 
 function echo_black   { echo_clr "$1" $CLR_BLACK; }
 function echo_green   { echo_clr "$1" $CLR_GREEN; }
@@ -57,14 +61,14 @@ function echo_magenta { echo_clr "$1" $CLR_MAGENTA; }
 function echo_cyan    { echo_clr "$1" $CLR_CYAN; }
 function echo_white   { echo_clr "$1" $CLR_WHITE; }
 
-function wrap_blackb   { wrap_clr "$1" $CLR_BLACKB; }
-function wrap_greenb   { wrap_clr "$1" $CLR_GREENB; }
-function wrap_redb     { wrap_clr "$1" $CLR_REDB; }
-function wrap_brownb   { wrap_clr "$1" $CLR_BROWNB; }
-function wrap_blueb    { wrap_clr "$1" $CLR_BLUEB; }
-function wrap_magentab { wrap_clr "$1" $CLR_MAGENTAB; }
-function wrap_cyanb    { wrap_clr "$1" $CLR_CYANB; }
-function wrap_whiteb   { wrap_clr "$1" $CLR_WHITEB; }
+function wrap_blackb   { wrap_clr "$1" "$2" $CLR_BLACKB; }
+function wrap_greenb   { wrap_clr "$1" "$2" $CLR_GREENB; }
+function wrap_redb     { wrap_clr "$1" "$2" $CLR_REDB; }
+function wrap_brownb   { wrap_clr "$1" "$2" $CLR_BROWNB; }
+function wrap_blueb    { wrap_clr "$1" "$2" $CLR_BLUEB; }
+function wrap_magentab { wrap_clr "$1" "$2" $CLR_MAGENTAB; }
+function wrap_cyanb    { wrap_clr "$1" "$2" $CLR_CYANB; }
+function wrap_whiteb   { wrap_clr "$1" "$2" $CLR_WHITEB; }
 
 function echo_blackb   { echo_clr "$1" $CLR_BLACKB; }
 function echo_greenb   { echo_clr "$1" $CLR_GREENB; }
