@@ -38,14 +38,11 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 ln -sf "$HOME/.venv.d/postactivate" "$WORKON_HOME/postactivate"
 ln -sf "$HOME/.venv.d/postdeactivate" "$WORKON_HOME/postdeactivate"
 
-function venv_prompt {
-    if [ ! -z "$VENV_NAME" ]
+function __venv_prompt {
+    fmt="$1"
+    venv="${VIRTUAL_ENV:+$(basename $VIRTUAL_ENV)}"
+    if [ ! -z "$venv" ]
     then
-        VENV_PROMPT="`wrap_green 1 $VENV_NAME`"
-        PIPEC="|"
-    else
-        VENV_PROMPT=""
-        PIPEC=""
+        printf "$fmt" "$venv"
     fi
-    echo "${VENV_PROMPT}${PIPEC}"
 }
