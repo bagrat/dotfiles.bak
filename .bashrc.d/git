@@ -1,14 +1,38 @@
 #!/bin/bash
 
-export GITAWAREPROMPT=~/.bashrc.d/git-aware-prompt
-source "${GITAWAREPROMPT}/main.sh"
+# Grabbed from jimeh/git-aware-prompt
+find_git_branch() {
+  # Based on: http://stackoverflow.com/a/13003854/170413
+  local branch
+  if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
+    if [[ "$branch" == "HEAD" ]]; then
+      branch='detached*'
+    fi
+    local git_branch="$branch"
+  else
+    local git_branch=""
+  fi
+  echo "$git_branch"
+}
+
+find_git_dirty() {
+  local status=$(git status --porcelain 2> /dev/null)
+  if [[ "$status" != "" ]]; then
+    local git_dirty='*'
+  else
+    local git_dirty=''
+  fi
+  echo "$git_dirty"
+}
 
 function git_prompt {
-    if [ ! -z "$git_branch" ]
+local branch="$(find_git_branch)"
+    DIRTY_BRANCH=""
+    PIPEC=""
+    if [ ! -z "$branch" ]
     then
-        BRANCH=`echo $git_branch | sed "s/^(\(.*\))$/\1/"`
-        DIRTY_BRANCH="$BRANCH$git_dirty"
+        DIRTY_BRANCH="`wrap_blue 1 $branch$(find_git_dirty)`"
         PIPEC="|"
     fi
-    echo -e "`wrap_blue 1 $DIRTY_BRANCH`$PIPEC"
+    echo "$DIRTY_BRANCH$PIPEC"
 }

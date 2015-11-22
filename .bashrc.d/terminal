@@ -3,9 +3,9 @@
 
 if [[ "`hostname`" =~ ^n9code.* ]]
 then
-    export PS_TEXT='\w\$ '
+    export PS_TEXT="`wrap_brown 1 '\w\$'` "
 else
-    export PS_TEXT='\u@\h:\w\$ '
+    export PS_TEXT="`wrap_white 1 '\u@\h'`:`wrap_brown 1 '\w\$'` "
 fi
 
 # export PS_COLORED="\[${CLR_ESC}${CLR_BROWN}m\]${PS_TEXT}"
@@ -15,10 +15,11 @@ export PS_COLORED="`wrap_brown 1 \"${PS_TEXT}\"`"
 export CLICOLOR=1
 
 function ps_update {
-    GIT_PROMPT="`git_prompt`"
+    GIT_PROMPT="$(git_prompt)"
+    VENV_PROMPT="$(venv_prompt)"
     export PS1="${VENV_PROMPT}${GIT_PROMPT}${PS_COLORED}"
 }
-export PROMPT_COMMAND="$PROMPT_COMMAND ps_update"
+export PROMPT_COMMAND="ps_update; $PROMPT_COMMAND"
 
 function postpone {
    if [[ ${#READLINE_LINE} -gt 0 ]]

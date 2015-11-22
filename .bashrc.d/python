@@ -43,6 +43,9 @@ function venv_prompt {
     then
         VENV_PROMPT="`wrap_green 1 $VENV_NAME`"
         PIPEC="|"
+    else
+        VENV_PROMPT=""
+        PIPEC=""
     fi
     echo "${VENV_PROMPT}${PIPEC}"
 }

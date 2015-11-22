@@ -358,7 +358,7 @@ let g:syntastic_check_on_wq = 1
 " Grin configuration
 function! g:NNfind(pattern)
     execute "tabnew"
-    execute "Ag '".a:pattern."' '".g:init_dir."'"
+    execute "Ag! /".a:pattern."/ ".g:init_dir.""
     " TODO: change title to Search Results
 endfunction
 command! -nargs=* NNFind call g:NNfind('<args>')

@@ -1,10 +1,5 @@
 #!/bin/bash
 
 export VENV_NAME="`basename $VIRTUAL_ENV`"
-export VENV_PROMPT="`wrap_green 1 \"$VENV_NAME\"`"
-if [ ! -z "$VENV_PROMPT" ]
-then
-    VENV_PROMPT="$VENV_PROMPT|"
-fi
 
 # export PS1="$COLORED_VENV_NAME|$PS1"
