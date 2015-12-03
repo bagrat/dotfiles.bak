@@ -14,6 +14,7 @@ Plugin 'mbbill/undotree'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/indentpython.vim'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
@@ -195,6 +196,8 @@ vnoremap > ><CR>gv
 vnoremap < <<CR>gv
 map <leader>/ gcc
 vmap <leader>/ gc
+
+vmap <C-r> "_dP
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>rv :w<cr>:source $MYVIMRC<cr>

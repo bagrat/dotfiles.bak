@@ -8,7 +8,7 @@ function vmstart {
    vmcheckvbox || return 1;
    if [ -z $1 ]
    then
-      echo -e `clr_blue "Which VM?"`
+      echo -e `wrap_blue 0 "Which VM?"`
       return 2
    fi
    VBoxHeadless --startvm $1 || return 1 &
@@ -17,7 +17,7 @@ function vmstop {
    vmcheckvbox || return 1;
    if [ -z $1 ]
    then
-      echo -e `clr_blue "Which VM?"`
+      echo -e `wrap_blue 0 "Which VM?"`
       return 2
    fi
    VBoxManage controlvm $1 poweroff || return 1;
@@ -37,15 +37,15 @@ function vmlist {
 
    if [ -z $1 ]
    then
-      clr_bold "`clr_brown "Running VMs:"`"
+      echo_brown "Running VMs:"
       for vm in `cat $RVMS`
       do
          line="$vm - `vmip $vm`"
-         clr_green "$line"
+         echo_green "$line"
       done
       echo
-      clr_brown "Down VMs:"
-      clr_blue "`cat $OVMS`"
+      echo_brown "Down VMs:"
+      echo_blue "`cat $OVMS`"
    else
       if [ $1 == "-r" ]
       then
@@ -79,7 +79,7 @@ function vmip {
    vmcheckvbox || return 1;
    if [ -z "$1" ]
    then
-      clr_blue "Which VM?"
+      echo_blue "Which VM?"
       return 1
    fi
    IP=`VBoxManage guestproperty get "$1" "/VirtualBox/GuestInfo/Net/0/V4/IP" | cut -d \  -f 2`
@@ -94,14 +94,14 @@ function vmssh {
    vmcheckvbox || return 1;
    if [ -z "$1" ]
    then
-      clr_blue "Which VM?"
+      echo_blue "Which VM?"
       return 1
    fi
    HOST=`vmip "$1"`
    
    if [ -z $HOST ]
    then
-      clr_red "Problem connecting to $1"
+      echo_red "Problem connecting to $1"
       return 1
    fi
 
@@ -109,13 +109,13 @@ function vmssh {
    then
       HOST="$2@$HOST"
    fi
-   clr_green "Connecting to $1 using `clr_escape "$HOST" $CLR_BROWN $CLR_BOLD`"
+   echo_green "Connecting to $1 using `wrap_brownb 0 $HOST`"
    ssh $HOST
 }
 function vmrst {
    if [ -z "$1" ]
    then
-      clr_blue "Which VM?"
+      echo_blue "Which VM?"
       return 1
    fi
    vmisup "$1" || vmstop "$1"

@@ -14,3 +14,4 @@ shopt -s histappend
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+ulimit -n 8192

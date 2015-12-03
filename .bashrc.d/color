@@ -40,7 +40,7 @@ function wrap_clr {
 }
 
 function echo_clr {
-    echo -e "`wrap_clr 0 $*`"
+    echo -e "`wrap_clr 0 \"$1\" \"$2\"`"
 }
 
 function wrap_black   { wrap_clr "$1" "$2" $CLR_BLACK; }
@@ -52,14 +52,14 @@ function wrap_magenta { wrap_clr "$1" "$2" $CLR_MAGENTA; }
 function wrap_cyan    { wrap_clr "$1" "$2" $CLR_CYAN; }
 function wrap_white   { wrap_clr "$1" "$2" $CLR_WHITE; }
 
-function echo_black   { echo_clr "$1" $CLR_BLACK; }
-function echo_green   { echo_clr "$1" $CLR_GREEN; }
-function echo_red     { echo_clr "$1" $CLR_RED; }
-function echo_brown   { echo_clr "$1" $CLR_BROWN; }
-function echo_blue    { echo_clr "$1" $CLR_BLUE; }
-function echo_magenta { echo_clr "$1" $CLR_MAGENTA; }
-function echo_cyan    { echo_clr "$1" $CLR_CYAN; }
-function echo_white   { echo_clr "$1" $CLR_WHITE; }
+function echo_black   { echo_clr "$*" $CLR_BLACK; }
+function echo_green   { echo_clr "$*" $CLR_GREEN; }
+function echo_red     { echo_clr "$*" $CLR_RED; }
+function echo_brown   { echo_clr "$*" $CLR_BROWN; }
+function echo_blue    { echo_clr "$*" $CLR_BLUE; }
+function echo_magenta { echo_clr "$*" $CLR_MAGENTA; }
+function echo_cyan    { echo_clr "$*" $CLR_CYAN; }
+function echo_white   { echo_clr "$*" $CLR_WHITE; }
 
 function wrap_blackb   { wrap_clr "$1" "$2" $CLR_BLACKB; }
 function wrap_greenb   { wrap_clr "$1" "$2" $CLR_GREENB; }
@@ -70,11 +70,11 @@ function wrap_magentab { wrap_clr "$1" "$2" $CLR_MAGENTAB; }
 function wrap_cyanb    { wrap_clr "$1" "$2" $CLR_CYANB; }
 function wrap_whiteb   { wrap_clr "$1" "$2" $CLR_WHITEB; }
 
-function echo_blackb   { echo_clr "$1" $CLR_BLACKB; }
-function echo_greenb   { echo_clr "$1" $CLR_GREENB; }
-function echo_redb     { echo_clr "$1" $CLR_REDB; }
-function echo_brownb   { echo_clr "$1" $CLR_BROWNB; }
-function echo_blueb    { echo_clr "$1" $CLR_BLUEB; }
-function echo_magentab { echo_clr "$1" $CLR_MAGENTAB; }
-function echo_cyanb    { echo_clr "$1" $CLR_CYANB; }
-function echo_whiteb   { echo_clr "$1" $CLR_WHITEB; }
+function echo_blackb   { echo_clr "$*" $CLR_BLACKB; }
+function echo_greenb   { echo_clr "$*" $CLR_GREENB; }
+function echo_redb     { echo_clr "$*" $CLR_REDB; }
+function echo_brownb   { echo_clr "$*" $CLR_BROWNB; }
+function echo_blueb    { echo_clr "$*" $CLR_BLUEB; }
+function echo_magentab { echo_clr "$*" $CLR_MAGENTAB; }
+function echo_cyanb    { echo_clr "$*" $CLR_CYANB; }
+function echo_whiteb   { echo_clr "$*" $CLR_WHITEB; }
