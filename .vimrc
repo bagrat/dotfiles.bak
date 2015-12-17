@@ -16,7 +16,7 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/indentpython.vim'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'rking/ag.vim'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -24,6 +24,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'albfan/nerdtree'
 Plugin 'albfan/nerdtree-git-plugin'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'ryanoasis/vim-devicons'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -358,10 +359,11 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 
 
-" Grin configuration
+" Ag configuration
 function! g:NNfind(pattern)
     execute "tabnew"
-    execute "Ag! /".a:pattern."/ ".g:init_dir.""
+    echom "Searching for ".a:pattern
+    execute "Ag! '".a:pattern."' '".g:init_dir."'"
     " TODO: change title to Search Results
 endfunction
 command! -nargs=* NNFind call g:NNfind('<args>')
