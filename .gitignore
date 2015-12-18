@@ -1,8 +1,10 @@
 **/*.swp
 !.vim/bundle/Vundle.vim*
 .vim/bundle/**
+.tmux/plugins/**
 **/.netrwhlist
 **/*.sess
 
 .tmux/resurrect/tmux_resurrect*.txt
 .tmux/resurrect/last
+**/*.png

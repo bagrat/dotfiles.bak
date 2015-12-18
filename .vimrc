@@ -38,6 +38,12 @@ call vundle#end()
 filetype indent plugin on
 syntax on
 
+
+" Color scheme
+colorscheme solarized
+set background=dark
+
+
 augroup vimrc
     au!
     au BufWritePost $MYVIMRC nested source $MYVIMRC
@@ -45,10 +51,6 @@ augroup END
 
 let mapleader=','
 
-
-" Color scheme
-colorscheme solarized
-set background=dark
 
 
 " General
@@ -236,7 +238,7 @@ noremap z<left> :diffget LO<cr>
 endif
 
 let g:lightline = {
-            \ 'colorscheme': 'solarized',
+            \ 'colorscheme': 'solarized_dark_n9code',
             \ 'active': {
             \   'left': [ 
             \       [ 'mode', 'paste' ],
@@ -252,7 +254,6 @@ let g:lightline = {
             \       ['tabs']
             \   ],
             \   'right': [
-            \       
             \   ],
             \ },
             \ 'component_function': {
@@ -268,6 +269,7 @@ let g:lightline = {
             \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
             \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
             \ }
+
 function! LightLineFugitive()
   try
     if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
@@ -385,3 +387,8 @@ let g:ctrlp_by_filename = 1
 
 let g:ConqueGdb_Leader = '<leader>;'
 " Here goes git
+"
+
+let g:webdevicons_conceal_nerdtree_brackets = '1'
+let g:WebDevIconsUnicodeDecorateFolderNodes = '1'
+
