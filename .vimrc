@@ -29,7 +29,7 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'n9code/pydeadbeef.vim'
+" Plugin 'n9code/pydeadbeef.vim'
 Plugin 'vim-scripts/Conque-GDB'
 
 " Plugin 'nathanaelkane/vim-indent-guides'
