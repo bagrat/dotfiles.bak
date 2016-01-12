@@ -162,6 +162,7 @@ imap <C-e> <Esc><C-e>a
 
 noremap <C-t> :tabnew<CR> 
 imap <C-t> <Esc><C-t>
+noremap <leader><Tab> :tabclose<CR>
 
 " NERDTree Configuration
 noremap <leader>t :NERDTreeTabsToggle<CR>
@@ -372,11 +373,11 @@ command! -nargs=* NNFind call g:NNfind('<args>')
 noremap <leader>f :NNFind 
 noremap <leader>F :NNFind <C-R><C-W><CR>
 
-augroup QuickFix
-    autocmd!
-    autocmd FileType qf hi Search cterm=NONE ctermfg=NONE ctermbg=NONE
-    autocmd FileType qf hi Cursor ctermfg=8 ctermbg=8
-augroup END
+" augroup QuickFix
+"     autocmd!
+"     autocmd FileType qf hi Search cterm=NONE ctermfg=NONE ctermbg=NONE
+"     autocmd FileType qf hi Cursor ctermfg=8 ctermbg=8
+" augroup END
 
 
 " CtrlP Configuration

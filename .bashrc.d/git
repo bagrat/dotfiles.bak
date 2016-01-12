@@ -37,5 +37,17 @@ local branch="$(find_git_branch)"
     echo "$DIRTY_BRANCH$PIPEC"
 }
 
-source /usr/local/etc/bash_completion.d/git-prompt.sh
+GIT_SOURCE_FILE="/1usr/local/etc/bash_completion.d/git-prompt.sh"
+
+if [ -f "$GIT_SOURCE_FILE" ]
+then
+    source "$GIT_SOURCE_FILE"
+else
+    if ! hash __git_ps1 > /dev/null 2>&1
+    then
+        function __git_ps1 {
+            return
+        }
+    fi
+fi
 GIT_PS1_SHOWDIRTYSTATE=true
