@@ -37,7 +37,7 @@ local branch="$(find_git_branch)"
     echo "$DIRTY_BRANCH$PIPEC"
 }
 
-GIT_SOURCE_FILE="/1usr/local/etc/bash_completion.d/git-prompt.sh"
+GIT_SOURCE_FILE="/usr/local/etc/bash_completion.d/git-prompt.sh"
 
 if [ -f "$GIT_SOURCE_FILE" ]
 then
