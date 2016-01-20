@@ -29,6 +29,8 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+
 " Plugin 'n9code/pydeadbeef.vim'
 Plugin 'vim-scripts/Conque-GDB'
 
@@ -214,6 +216,7 @@ augroup Python
     autocmd FileType python noremap <leader>py :w<CR>:!pyt_run %<CR>
     " autocmd FileType python VirtualEnvActivate
 augroup END
+
 
 " This is for editing test files with long wrapping lines
 augroup text

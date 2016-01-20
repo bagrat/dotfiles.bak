@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $HOSTNAME =~ ^n9code ]]
+then
+    export ARROW_RF="⮀"
+    export ARROW_RE="⮁"
+    export ARROW_LF="⮂"
+    export ARROW_LE="⮃"
+fi

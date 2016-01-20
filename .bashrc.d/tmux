@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ $HOSTNAME =~ ^n9code ]]
+then
+    export TMUX_INIT_STYLE="$HOME/.tmux/styles-active.conf"
+else
+    export TMUX_INIT_STYLE="$HOME/.tmux/styles-inactive.conf"
+fi
+
+# Ignoring M-F11 and M-F12
+bind '"3;2~":""'
+bind '"4;2~":""'
