@@ -67,3 +67,4 @@ function inetmask {
 # TMUX
 export EDITOR='vim'
 export TERM=xterm-256color
+export DISPLAY=:0.0

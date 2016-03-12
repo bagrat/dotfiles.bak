@@ -28,11 +28,14 @@ function pyt_run {
         echo '------------------------------------------------'
         pygmentize -g $1 | cat -n
         echo '------------------------------------------------'
+        # python -m IPython --no-banner --no-confirm-exit --nosep --pprint -i $1 || python -i $1
         python -i $1
     else
         echo "Supply the file to run!"
     fi
 }
+
+export -f pyt_run
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 ln -sf "$HOME/.venv.d/postactivate" "$WORKON_HOME/postactivate"

@@ -57,6 +57,7 @@ let mapleader=','
 
 " General
 set encoding=utf-8
+set lazyredraw
 scriptencoding utf-8
 set fileformat=unix
 set number
@@ -252,6 +253,9 @@ let g:lightline = {
             \       ['lineinfo'],
             \       ['percent'],
             \   ],
+            \ },
+            \ 'enable': {
+            \   'tabline': 1
             \ },
             \ 'tabline': {
             \   'left': [
