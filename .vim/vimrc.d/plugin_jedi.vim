@@ -5,10 +5,8 @@ let g:jedi#use_tabs_not_buffers = 0
 
 map <leader>b <leader>d
 function! GotoInSplit()
-    let g:jedi#use_tabs_not_buffers = 0
     let g:jedi#use_splits_not_buffers = "winwidth"
     call jedi#goto()
     let g:jedi#use_splits_not_buffers = ""
-    let g:jedi#use_tabs_not_buffers = 1
 endfunction
 map <leader>B :call GotoInSplit()<CR>
