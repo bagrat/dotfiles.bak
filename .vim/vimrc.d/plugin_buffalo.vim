@@ -32,6 +32,7 @@ let g:buffalo_lsep_hidden_active = "\u2b81"
 let g:buffalo_rsep_active_hidden = "\u2b81"
 
 let g:buffalo_rsep_hidden_hidden = "\u2b81"
+let g:buffalo_rsep_active_active = "\u2b81"
 
 let g:buffalo_rsep_hidden_last = "\u2b81"
 let g:buffalo_rsep_current_last = "\u2b80"
