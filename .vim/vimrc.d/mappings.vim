@@ -25,7 +25,7 @@ noremap <Tab> :call buffalo#next()<CR>:echo<CR>
 noremap <S-Tab> :call buffalo#prev()<CR>:echo<CR>
 
 noremap <leader>q :q<CR>
-noremap <leader><Tab> :bd<CR>
+noremap <leader><Tab> :call CloseBuffer()<CR>
 noremap <leader>Q :qal!<CR><Esc>
 
 noremap <leader>ss :setlocal spell spellang=en_us<cr>
