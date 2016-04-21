@@ -8,3 +8,7 @@
 
 .tmux/resurrect/*
 **/*.png
+**/*.ti
+**/tmp
+**/*~
+.vim/plugged/*

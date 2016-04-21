@@ -8,45 +8,53 @@ filetype off
 if &compatible
   set nocompatible
 endif
-set runtimepath^=~/.vim/bundle/dein.vim
 
-call dein#begin(expand('~/.cache/dein'))
+call plug#begin('~/.vim/plugged')
 
-if dein#check_install()
-    call dein#install()
+Plug 'VundleVim/Vundle.vim'
+
+Plug 'n9code/vim-buffalo'
+Plug 'itchyny/lightline.vim'
+Plug 'mbbill/undotree'
+Plug 'vim-scripts/BufOnly.vim'
+
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'scrooloose/syntastic'
+Plug 'vim-scripts/indentpython.vim'
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-commentary'
+Plug 'rking/ag.vim'
+Plug 'Chun-Yang/vim-action-ag'
+Plug 'ntpeters/vim-better-whitespace'
+
+Plug 'albfan/nerdtree'
+Plug 'albfan/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'nathanaelkane/vim-indent-guides'
+
+" VIM Plugins
+if !has('nvim')
+    Plug 'davidhalter/jedi-vim'
+    let g:deoplete#sources = get(g:,'deoplete#sources',{})
+
+" NeoVIM Plugins
+else
+    Plug 'Shougo/deoplete.nvim'
+    let g:deoplete#sources = get(g:,'deoplete#sources',{})
+    Plug 'zchee/deoplete-jedi'
+    Plug 'n9code/vim-deadbeef'
+
 endif
 
-call dein#add('VundleVim/Vundle.vim')
-
-call dein#add('n9code/vim-buffalo')
-call dein#add('itchyny/lightline.vim')
-call dein#add('mbbill/undotree')
-call dein#add('vim-scripts/BufOnly.vim')
-
-call dein#add('davidhalter/jedi-vim')
-call dein#add('jmcantrell/vim-virtualenv')
-call dein#add('scrooloose/syntastic')
-call dein#add('vim-scripts/indentpython.vim')
-
-call dein#add('ctrlpvim/ctrlp.vim')
-call dein#add('tpope/vim-commentary')
-call dein#add('rking/ag.vim')
-call dein#add('Chun-Yang/vim-action-ag')
-call dein#add('ntpeters/vim-better-whitespace')
-
-call dein#add('albfan/nerdtree')
-call dein#add('albfan/nerdtree-git-plugin')
-call dein#add('ryanoasis/vim-devicons')
-
-call dein#add('tpope/vim-fugitive')
-call dein#add('airblade/vim-gitgutter')
-
-call dein#add('tmux-plugins/vim-tmux-focus-events')
-call dein#add('christoomey/vim-tmux-navigator')
-
-call dein#add('nathanaelkane/vim-indent-guides')
-
-call dein#end()
+call plug#end()
 
 filetype indent plugin on
 syntax on
