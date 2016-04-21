@@ -1,6 +1,6 @@
 **/*.swp
-!.vim/bundle/Vundle.vim*
 .vim/bundle/**
+!.vim/bundle/dein.vim*
 !.tmux/plugins/tpm*
 .tmux/plugins/**
 **/.netrwhlist

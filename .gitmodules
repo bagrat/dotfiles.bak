@@ -1,6 +1,6 @@
-[submodule ".vim/bundle/Vundle.vim"]
-	path = .vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule ".vim/bundle/dein.vim"]
+	path = .vim/bundle/dein.vim
+	url = https://github.com/Shougo/dein.vim
 
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
@@ -9,3 +9,6 @@
 [submodule ".bashrc.d/git-aware-prompt"]
 	path = .bashrc.d/git-aware-prompt
 	url = git://github.com/jimeh/git-aware-prompt.git
+[submodule "dein.vim"]
+	path = dein.vim
+	url = https://github.com/Shougo/dein.vim
