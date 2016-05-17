@@ -19,8 +19,9 @@ Plug 'mbbill/undotree'
 Plug 'vim-scripts/BufOnly.vim'
 
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/indentpython.vim'
+Plug 'n9code/python-syntax'
+let python_version_2 = 1
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
@@ -39,18 +40,21 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'davidhalter/jedi-vim'
 
 " VIM Plugins
 if !has('nvim')
-    Plug 'davidhalter/jedi-vim'
     let g:deoplete#sources = get(g:,'deoplete#sources',{})
+    Plug 'scrooloose/syntastic'
 
 " NeoVIM Plugins
 else
     Plug 'Shougo/deoplete.nvim'
     let g:deoplete#sources = get(g:,'deoplete#sources',{})
     Plug 'zchee/deoplete-jedi'
+    let g:jedi#completions_enabled = 0
     Plug 'n9code/vim-deadbeef'
+    Plug 'neomake/neomake'
 
 endif
 
@@ -60,5 +64,7 @@ filetype indent plugin on
 syntax on
 
 for f in split(glob('~/.vim/vimrc.d/*.vim'), '\n')
-    exe 'source' f
+    if f =~ "^[^_]"
+        exe 'source' f
+    endif
 endfor

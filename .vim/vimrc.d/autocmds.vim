@@ -1,11 +1,10 @@
 augroup Python
     autocmd!
     autocmd FileType python noremap <leader>py :w<CR>:!pyt_run %<CR>
-    " autocmd FileType python VirtualEnvActivate
 augroup END
 
 
-" This is for editing test files with long wrapping lines
+" This is for editing text files with long wrapping lines
 augroup text
     autocmd!
     autocmd FileType tex noremap <Up> gk
