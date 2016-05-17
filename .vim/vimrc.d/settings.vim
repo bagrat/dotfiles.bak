@@ -30,6 +30,10 @@ set cmdheight=1
 set pastetoggle=<F2>
 set clipboard=unnamed
 
+if has('nvim')
+    set mouse="0"
+endif
+
 
 " Tabs & Spaces
 set expandtab
