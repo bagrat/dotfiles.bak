@@ -54,7 +54,7 @@ mkdir ~/.config
 ln -s ~/.vim ~/.config/nvim
 install_file "$ROOT/.vim/init.vim" ~/.vimrc
 echo "Installing vim plugins"
-vim +PluginInstall +q +q
+vim +PlugInstall +q +q
 
 echo "Done!"
 
