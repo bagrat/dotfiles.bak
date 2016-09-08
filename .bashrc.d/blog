@@ -1,6 +1,0 @@
-#!/bin/bash
-
-BLOGENV="blog"
-
-alias blog='cd ~/drive/dev/github/blog && workon $BLOGENV'
-

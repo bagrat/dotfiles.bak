@@ -3,10 +3,8 @@ let g:deoplete#auto_complete_start_length = 3
 
 
 if has('nvim')
-    " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    " function! s:my_cr_function() abort
-    "     return deoplete#mappings#close_popup()
-    " endfunction
+    let b:deoplete_ignore_sources = ['buffer']
+
     inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
     inoremap <silent><expr> <CR>
                     \ pumvisible() ?

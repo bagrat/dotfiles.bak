@@ -16,3 +16,6 @@ augroup text
     autocmd FileType tex noremap <C-e> g$
     autocmd FileType tex imap <C-e> <Esc><C-e>a
 augroup END
+
+" autocmd FocusGained * checktime
+" au FocusGained * echom 'focus gained!'

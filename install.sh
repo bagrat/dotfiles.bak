@@ -57,4 +57,3 @@ echo "Installing vim plugins"
 vim +PlugInstall +q +q
 
 echo "Done!"
-

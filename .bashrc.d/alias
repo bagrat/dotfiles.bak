@@ -5,15 +5,11 @@ alias l="ls"
 alias ll="la -l"
 alias la="ls -la"
 
-alias oss="cd ~/drive/dev/github"
 alias ..="cd .."
 
 alias sshci="ssh-copy-id -i ~/.ssh/id_rsa.pub"
 
 alias hosts="sudo vim /etc/hosts"
-alias bashrc="vim ~/.bashrc"
 
 alias fuck='sudo $(history -p \!\!)'
 alias bash-l='. ~/.bashrc'
-
-alias blog='cd ~/drive/dev/github/blog && workon blog'

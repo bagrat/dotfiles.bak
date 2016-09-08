@@ -2,4 +2,8 @@
 
 export VENV_NAME="`basename $VIRTUAL_ENV`"
 
-# export PS1="$COLORED_VENV_NAME|$PS1"
+# This hook is run after every virtualenv is activated.
+script="$VENV_HOOKS_HOME/postactivate-"$(basename $VIRTUAL_ENV)
+if [ -r $script ]; then
+    source $script
+fi
