@@ -6,4 +6,13 @@ then
     export ARROW_RE="⮁"
     export ARROW_LF="⮂"
     export ARROW_LE="⮃"
+    export BAT_UP="∴"
+    export BAT_DOWN="∵"
+    export BAT_CUBE="∷"
+    export BAT_DOT="∙"
+    export INET_ON="◆"
+    export INET_OFF="◊"
+else
+    export INET_ON="O"
+    export INET_OFF="X"
 fi
