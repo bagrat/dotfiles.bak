@@ -1,6 +1,6 @@
 " Buffer Colors
-hi BuffaloCurrent ctermfg=7 ctermbg=8 gui=bold
-hi BuffaloActive ctermfg=11 ctermbg=10
+hi BuffaloCurrent ctermfg=8 ctermbg=3 gui=bold
+hi BuffaloActive ctermfg=3 ctermbg=10
 hi BuffaloHidden ctermfg=8 ctermbg=10
 hi BuffaloFill ctermfg=0 ctermbg=10
 
@@ -11,10 +11,10 @@ hi default link BuffaloRSepActiveHidden BuffaloRSepHiddenHidden
 hi default link BuffaloLSepHiddenActive BuffaloRSepHiddenHidden
 hi default link BuffaloRSepActiveActive BuffaloRSepHiddenHidden
 
-hi BuffaloRSepCurrentHidden ctermfg=8 ctermbg=10
-hi BuffaloLSepHiddenCurrent ctermfg=10 ctermbg=8
-hi BuffaloRSepCurrentActive ctermfg=8 ctermbg=10
-hi BuffaloLSepActiveCurrent ctermfg=10 ctermbg=8
+hi BuffaloRSepCurrentHidden ctermfg=3 ctermbg=10
+hi BuffaloLSepHiddenCurrent ctermfg=10 ctermbg=3
+hi BuffaloRSepCurrentActive ctermfg=3 ctermbg=10
+hi BuffaloLSepActiveCurrent ctermfg=10 ctermbg=3
 
 " hi BuffaloRSepActiveHidden ctermfg=11 ctermbg=10
 " hi BuffaloLSepHiddenActive ctermfg=10 ctermbg=11

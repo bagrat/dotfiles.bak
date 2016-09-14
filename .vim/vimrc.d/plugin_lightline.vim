@@ -1,5 +1,5 @@
 let g:lightline = {
-            \ 'colorscheme': 'solarized_dark',
+            \ 'colorscheme': 'solarized_dark_n9code',
             \ 'active': {
             \   'left': [ 
             \       [ 'mode', 'paste' ],
@@ -10,11 +10,15 @@ let g:lightline = {
             \       ['percent'],
             \   ],
             \ },
+            \ 'inactive': {
+            \   'right': []
+            \ },
             \ 'component_function': {
             \   'fugitive': 'LightLineFugitive',
             \   'filename': 'LightLineFilename',
             \   'mode': 'LightLineMode',
             \   'venv': 'LightLineVenv',
+            \   'ctrlpmark': 'CtrlPMark'
             \ },
             \ 'enable': {
             \   'tabline': 1
@@ -49,6 +53,11 @@ endfunction
 
 function! LightLineFilename()
   let fname = expand('%:t')
+  if fname == 'ControlP'
+    return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' . 
+          \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
+          \ g:lightline.ctrlp_next
+  endif
   return fname == 'ControlP' ? '' :
         \ fname =~ '__Gundo\|NERD_tree' ? '' :
         \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
@@ -84,3 +93,21 @@ function! LightLineVenv()
     return strlen(venv) ? "\u24d4 ".venv : ""
 endfunction
 
+function! CtrlPMark()
+  return expand('%:t') =~ 'ControlP' ? g:lightline.ctrlp_marked : ''
+endfunction
+
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  let g:lightline.ctrlp_marked = a:marked
+  return lightline#statusline(0)
+endfunction
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
