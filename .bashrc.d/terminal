@@ -1,6 +1,6 @@
 #!/bin/bash
-## Terminal color theme and promt format ##
 
+# When on my personal laptop, I do not need the hostname in the prompt
 if [[ "`hostname`" =~ ^n9code.* ]]
 then
     export PS_TEXT="`wrap_brown 1 '\w\$'` "
@@ -8,60 +8,9 @@ else
     export PS_TEXT="`wrap_white 1 '\u@\h'`:`wrap_brown 1 '\w\$'` "
 fi
 
-export CLICOLOR=1
+# export CLICOLOR=1
 export PS1="\[\033[$CLR_GREEN\]\$(__venv_prompt \"%s|\")\[\033[$CLR_RESET\]\
 \[\033[$CLR_BLUE\]\$(__git_ps1 \"%s|\")\[\033[$CLR_RESET\]\
 ${PS_TEXT}"
-
-
-function postpone {
-   if [[ ${#READLINE_LINE} -gt 0 ]]
-   then
-      if [[ "${READLINE_LINE::1}" == "#" ]]
-      then
-         READLINE_LINE="${READLINE_LINE:1}"
-      else
-         READLINE_LINE="#$READLINE_LINE"
-      fi
-   else
-      HIST_SIZE=`history | wc -l | tr -s ' ' | cut -d \  -f 2`
-      for i in $(seq 1 $HIST_SIZE)
-      do
-         LINE=`history | sort -r | head -n $i | tail -n 1 | tr -s ' ' | cut -d \  -f 3-`
-         if [[ "${LINE::1}" == "#" ]]
-         then
-            READLINE_LINE="${LINE:1}"
-            break
-         fi
-      done
-   fi
-}
-
-if [ -t 1 ]
-then
-    case "$-" in
-    *i*)
-        bind -x '"\C-b": postpone'
-        bind '"\C-p":"\C-b\C-e"'
-        ;;
-    esac
-fi
-
-function find_pids {
-   ps -ef | grep $1 | grep -v grep | tr -s ' ' | cut -d ' ' -f 3
-}
-
-function killinginthenameof {
-   for pid in `find_pids $1`
-   do
-      echo -n "killing `ps -o command -p $pid | tail -n 1`..."
-      sudo kill $pid || echo -n "Error"
-      echo "Done"
-   done
-}
-
-function inetmask {
-   echo `while read y; do echo ${y%.*}".0/$(m=0; while read -n 1 x && [ $x = f ]; do m=$[m+4]; done < <(ifconfig en0 | awk '/mask/{$4=substr($4,3);print $4}'); echo $m )"; done < <(ifconfig en0 | awk '/inet[ ]/{print $2}')`
-}
 
 export EDITOR='vim'

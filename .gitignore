@@ -3,7 +3,7 @@
 !.vim/bundle/dein.vim*
 !.tmux/plugins/tpm*
 .tmux/plugins/**
-**/.netrwhlist
+**/.netrwhist
 **/*.sess
 
 .tmux/resurrect/*

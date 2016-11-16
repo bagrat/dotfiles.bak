@@ -10,6 +10,7 @@ then
     export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
 fi
 
+# TODO: Deal with all venv hook stuff
 export VENV_HOOKS_HOME="$HOME/.private.d/venv-hooks"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 ln -sf "$HOME/.venv.d/postactivate" "$WORKON_HOME/postactivate"
@@ -24,34 +25,4 @@ function __venv_prompt {
     fi
 }
 
-function mkvirtualenv3 {
-    mkvirtualenv --python=python3 $@
-    pip install neovim
-}
-
 export PIP_DOWNLOAD_CACHE="~/.pip/repository"
-
-function pyt {
-    TEMP="$(mktemp -t python).py"
-    CWD="$(PWD)"
-    cd /tmp
-    vim $TEMP
-    cd "$CWD"
-    echo "$TEMP"
-}
-
-function pyt_run {
-    if [ ! -z "$1" ]
-    then
-        clear
-        echo '------------------------------------------------'
-        pygmentize -g $1 | cat -n
-        echo '------------------------------------------------'
-        # python -m IPython --no-banner --no-confirm-exit --nosep --pprint -i $1 || python -i $1
-        python -i $1
-    else
-        echo "Supply the file to run!"
-    fi
-}
-
-export -f pyt_run

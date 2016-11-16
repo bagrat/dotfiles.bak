@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Define the variable depending on which host I am on, i.e. when
+# on my laptop, the init style should be the active one,
+# otherwise - inactive.
 if [[ $HOSTNAME =~ ^n9code ]]
 then
     export TMUX_INIT_STYLE="$HOME/.tmux/styles-active.conf"
@@ -11,5 +14,5 @@ fi
 bind '"3;2~":""'
 bind '"4;2~":""'
 
-export TERM=xterm-256color
-export DISPLAY=:0.0
+# export TERM=xterm-256color
+# export DISPLAY=:0.0

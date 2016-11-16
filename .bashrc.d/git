@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# The following file contains some definitions for the git status
+# prompt labels (for $PS1).
 GIT_SOURCE_FILE="/usr/local/etc/bash_completion.d/git-prompt.sh"
 
+# First check if the file exists and then source it. If it is not
+# there, mock the used function from the file (__git_ps1)
 if [ -f "$GIT_SOURCE_FILE" ]
 then
     source "$GIT_SOURCE_FILE"
@@ -11,6 +15,8 @@ else
         function __git_ps1 {
             return
         }
+        echo "Error: git prompt file not found."
     fi
 fi
+
 GIT_PS1_SHOWDIRTYSTATE=true

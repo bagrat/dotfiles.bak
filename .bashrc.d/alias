@@ -7,9 +7,5 @@ alias la="ls -la"
 
 alias ..="cd .."
 
-alias sshci="ssh-copy-id -i ~/.ssh/id_rsa.pub"
-
-alias hosts="sudo vim /etc/hosts"
-
 alias fuck='sudo $(history -p \!\!)'
 alias bash-l='. ~/.bashrc'
