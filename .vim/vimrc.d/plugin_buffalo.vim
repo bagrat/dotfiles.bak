@@ -1,5 +1,5 @@
 " Buffer Colors
-hi BuffaloCurrent ctermfg=8 ctermbg=3 gui=bold
+hi BuffaloCurrent ctermfg=8 ctermbg=3
 hi BuffaloActive ctermfg=3 ctermbg=10
 hi BuffaloHidden ctermfg=8 ctermbg=10
 hi BuffaloFill ctermfg=0 ctermbg=10

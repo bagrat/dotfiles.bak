@@ -1,17 +1,24 @@
 let g:lightline = {
             \ 'colorscheme': 'solarized_dark_n9code',
+            \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+            \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+            \ 'component': {
+            \   'readonly': '%{&readonly?"\u2b64":""}',
+            \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":""}',
+            \ },
+            \ 'inactive': {
+            \   'right': [
+            \   ],
+            \ },
             \ 'active': {
             \   'left': [ 
             \       [ 'mode', 'paste' ],
-            \       [ 'fugitive', 'venv',  'readonly', 'filename', 'modified' ]
+            \       [ 'fugitive', 'venv', 'readonly', 'filename', 'modified' ]
             \   ],
             \   'right': [
             \       ['lineinfo'],
             \       ['percent'],
             \   ],
-            \ },
-            \ 'inactive': {
-            \   'right': []
             \ },
             \ 'component_function': {
             \   'fugitive': 'LightLineFugitive',
@@ -20,16 +27,16 @@ let g:lightline = {
             \   'venv': 'LightLineVenv',
             \   'ctrlpmark': 'CtrlPMark'
             \ },
-            \ 'enable': {
-            \   'tabline': 1
-            \ },
-            \ 'component': {
-            \   'readonly': '%{&readonly?"\u2b64":""}',
-            \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":""}',
-            \ },
-            \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-            \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
             \ }
+"             \ 'enable': {
+"             \   'tabline': 1
+"             \ },
+
+" hi StatusLine ctermbg=10 ctermfg=10
+" hi StatusLineNC ctermbg=10 ctermfg=10
+hi LightlineMiddle_active ctermfg=0 ctermbg=0
+hi LightlineLeft_active ctermfg=0 ctermbg=0
+hi LightlineRight_active ctermfg=0 ctermbg=0
 
 function! LightLineFugitive()
   try

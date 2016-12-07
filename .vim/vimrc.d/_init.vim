@@ -1,5 +1,3 @@
-let g:init_dir = getcwd()
-
 if has('nvim')
     function! GetPythonVersion()
         let out = systemlist('python --version')

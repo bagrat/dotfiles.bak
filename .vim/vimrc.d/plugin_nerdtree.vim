@@ -2,6 +2,7 @@ noremap <leader>t :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
+let NERDTreeHijackNetrw = 0
 
 function! g:CloseBuffer()
     let ntopen = 0
@@ -18,14 +19,14 @@ function! g:CloseBuffer()
     endif
 endfunction
 
-let g:NERDTreeIndicatorMap = {
+let g:NERDTreeIndicatorMapCustom = {
             \ "Modified"  : "*",
             \ "Staged"    : "+",
             \ "Untracked" : "-",
             \ "Renamed"   : ">",
             \ "Unmerged"  : "=",
             \ "Deleted"   : "x",
-            \ "Dirty"     : "#",
+            \ "Dirty"     : "x",
             \ "Clean"     : "v",
             \ "Unknown"   : "?"
             \ }
