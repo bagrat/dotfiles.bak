@@ -1,14 +1,11 @@
 #!/bin/bash
 
-# The following file contains some definitions for the git status
-# prompt labels (for $PS1).
-GIT_SOURCE_FILE="/usr/local/etc/bash_completion.d/git-prompt.sh"
+GIT_SOURCE_HOME="$(dirname $(greadlink -f $(which git)))/../etc/bash_completion.d"
+GIT_PROMPT_FILE="$GIT_SOURCE_HOME/git-prompt.sh"
 
-# First check if the file exists and then source it. If it is not
-# there, mock the used function from the file (__git_ps1)
-if [ -f "$GIT_SOURCE_FILE" ]
+if [ -f "$GIT_PROMPT_FILE" ]
 then
-    source "$GIT_SOURCE_FILE"
+    source "$GIT_PROMPT_FILE"
 else
     if ! hash __git_ps1 > /dev/null 2>&1
     then
@@ -19,4 +16,4 @@ else
     fi
 fi
 
-GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWDIRTYSTATE=0

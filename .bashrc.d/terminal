@@ -1,16 +1,21 @@
 #!/bin/bash
 
-# When on my personal laptop, I do not need the hostname in the prompt
-if [[ "`hostname`" =~ ^n9code.* ]]
+# Configure the Prompt
+if [ $HELLO_ITS_ME ]
 then
-    export PS_TEXT="`wrap_brown 1 '\w\$'` "
+	PS_TEXT="$(echoc 3 0 ' \w' 1)$(echoc 0 8 '$ARROW_RF' 1) "
 else
-    export PS_TEXT="`wrap_white 1 '\u@\h'`:`wrap_brown 1 '\w\$'` "
+	PS_TEXT="$(echoc 15 0 ' \u@\h' 1)$(echoc 8 0 '$ARROW_RE ' 1)$(echoc 3 0 '\w' 1)$(echoc 0 8 $ARROW_RF 1) "
 fi
 
-# export CLICOLOR=1
-export PS1="\[\033[$CLR_GREEN\]\$(__venv_prompt \"%s|\")\[\033[$CLR_RESET\]\
-\[\033[$CLR_BLUE\]\$(__git_ps1 \"%s|\")\[\033[$CLR_RESET\]\
-${PS_TEXT}"
+GIT_SUFFIX="$(echoc 8 0 '$ARROW_RE' 1)"
+GIT_PROMPT="$(echoc 4 0 "\$(__git_ps1 \" %s $GIT_SUFFIX\")" 1)"
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1  # Disable default venv prompt
+VENV_SUFFI="$(echoc 8 0 '$ARROW_RE' 1)"
+VENV_PROMPT="$(echoc 2 0 "\$(__venv_prompt \" %s $VENV_SUFFIX\")" 1)"
+
+export PS1="$VENV_PROMPT$GIT_PROMPT$PS_TEXT"
+
+# Configure the default Editor
 export EDITOR='vim'

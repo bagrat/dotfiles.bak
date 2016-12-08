@@ -2,10 +2,10 @@
 
 if [[ $HOSTNAME =~ ^n9code ]]
 then
-    export ARROW_RF="⮀"
-    export ARROW_RE="⮁"
-    export ARROW_LF="⮂"
-    export ARROW_LE="⮃"
+    export ARROW_RF=""
+    export ARROW_RE=""
+    export ARROW_LF=""
+    export ARROW_LE=""
     export BAT_UP="∴"
     export BAT_DOWN="∵"
     export BAT_CUBE="∷"

@@ -1,80 +1,20 @@
 #!/bin/bash
 
-CLR_RED="$(tput setaf 1)"
-CLR_GREEN="$(tput setaf 2)"
-CLR_BROWN="$(tput setaf 3)"
-CLR_BLUE="$(tput setaf 4)"
-CLR_MAGENTA="$(tput setaf 5)"
-CLR_CYAN="$(tput setaf 6)"
-CLR_WHITE="$(tput setaf 7)"
+function echoc {
+	FG=$1
+	BG=$2
+	MSG=$3
 
-CLR_BOLD="$(tput bold)"
-CLR_RESET="$(tput sgr0)"
+	# PS1 needs extra escape charecters
+	IS_PS=$4
+	if [ ! -z $IS_PS ]
+	then
+		ESC="\["
+		CSE="\]"
+	else
+		ESC=""
+		CSE=""
+	fi
 
-CLR_BLACKB="$CLR_BLACK$CLR_BOLD"
-CLR_REDB="$CLR_RED$CLR_BOLD"
-CLR_GREENB="$CLR_GREEN$CLR_BOLD"
-CLR_BROWNB="$CLR_BROWN$CLR_BOLD"
-CLR_BLUEB="$CLR_BLUE$CLR_BOLD"
-CLR_MAGENTAB="$CLR_MAGENTA$CLR_BOLD"
-CLR_CYANB="$CLR_CYAN$CLR_BOLD"
-CLR_WHITEB="$CLR_WHITE$CLR_BOLD"
-
-CLR_ESC="\033["
-CLR_CSE=""
-CLR_ESC_PS="\\[\033["
-CLR_CSE_PS="\\]"
-
-function wrap_clr {
-    local is_ps="$1"
-    local result="$2"
-    local clr="$3"
-    if [ "$is_ps" -eq "0" ]
-    then
-        result="${CLR_ESC}${clr}${CLR_CSE}${result}${CLR_ESC}${CLR_RESET}${CLR_CSE}"
-    else
-        result="${CLR_ESC_PS}${clr}${CLR_CSE_PS}${result}${CLR_ESC_PS}${CLR_RESET}${CLR_CSE_PS}"
-    fi
-
-    echo -e "$result"
+	echo -e "$ESC$(tput setaf $FG)$CSE$ESC$(tput setab $BG)$CSE$MSG$ESC$(tput sgr0)$CSE"
 }
-
-function echo_clr {
-    echo -e "`wrap_clr 0 \"$1\" \"$2\"`"
-}
-
-function wrap_black   { wrap_clr "$1" "$2" $CLR_BLACK; }
-function wrap_green   { wrap_clr "$1" "$2" $CLR_GREEN; }
-function wrap_red     { wrap_clr "$1" "$2" $CLR_RED; }
-function wrap_brown   { wrap_clr "$1" "$2" $CLR_BROWN; }
-function wrap_blue    { wrap_clr "$1" "$2" $CLR_BLUE; }
-function wrap_magenta { wrap_clr "$1" "$2" $CLR_MAGENTA; }
-function wrap_cyan    { wrap_clr "$1" "$2" $CLR_CYAN; }
-function wrap_white   { wrap_clr "$1" "$2" $CLR_WHITE; }
-
-function echo_black   { echo_clr "$*" $CLR_BLACK; }
-function echo_green   { echo_clr "$*" $CLR_GREEN; }
-function echo_red     { echo_clr "$*" $CLR_RED; }
-function echo_brown   { echo_clr "$*" $CLR_BROWN; }
-function echo_blue    { echo_clr "$*" $CLR_BLUE; }
-function echo_magenta { echo_clr "$*" $CLR_MAGENTA; }
-function echo_cyan    { echo_clr "$*" $CLR_CYAN; }
-function echo_white   { echo_clr "$*" $CLR_WHITE; }
-
-function wrap_blackb   { wrap_clr "$1" "$2" $CLR_BLACKB; }
-function wrap_greenb   { wrap_clr "$1" "$2" $CLR_GREENB; }
-function wrap_redb     { wrap_clr "$1" "$2" $CLR_REDB; }
-function wrap_brownb   { wrap_clr "$1" "$2" $CLR_BROWNB; }
-function wrap_blueb    { wrap_clr "$1" "$2" $CLR_BLUEB; }
-function wrap_magentab { wrap_clr "$1" "$2" $CLR_MAGENTAB; }
-function wrap_cyanb    { wrap_clr "$1" "$2" $CLR_CYANB; }
-function wrap_whiteb   { wrap_clr "$1" "$2" $CLR_WHITEB; }
-
-function echo_blackb   { echo_clr "$*" $CLR_BLACKB; }
-function echo_greenb   { echo_clr "$*" $CLR_GREENB; }
-function echo_redb     { echo_clr "$*" $CLR_REDB; }
-function echo_brownb   { echo_clr "$*" $CLR_BROWNB; }
-function echo_blueb    { echo_clr "$*" $CLR_BLUEB; }
-function echo_magentab { echo_clr "$*" $CLR_MAGENTAB; }
-function echo_cyanb    { echo_clr "$*" $CLR_CYANB; }
-function echo_whiteb   { echo_clr "$*" $CLR_WHITEB; }

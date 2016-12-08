@@ -1,3 +1,14 @@
+#!/bin/bash
+
+# When on my personal laptop, I do not need the hostname in the prompt
+if [[ "`hostname`" =~ ^n9code.* ]]
+then
+	export HELLO_ITS_ME=1
+else
+	export HELLO_ITS_ME=0
+fi
+
+
 for file in ~/.bashrc.d/*
 do
     if [ -f "$file" ]

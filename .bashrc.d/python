@@ -11,10 +11,10 @@ then
 fi
 
 # TODO: Deal with all venv hook stuff
-export VENV_HOOKS_HOME="$HOME/.private.d/venv-hooks"
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-ln -sf "$HOME/.venv.d/postactivate" "$WORKON_HOME/postactivate"
-ln -sf "$HOME/.venv.d/postdeactivate" "$WORKON_HOME/postdeactivate"
+# export VENV_HOOKS_HOME="$HOME/.private.d/venv-hooks"
+# export VIRTUAL_ENV_DISABLE_PROMPT=1
+# ln -sf "$HOME/.venv.d/postactivate" "$WORKON_HOME/postactivate"
+# ln -sf "$HOME/.venv.d/postdeactivate" "$WORKON_HOME/postdeactivate"
 
 function __venv_prompt {
     fmt="$1"

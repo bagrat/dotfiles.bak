@@ -34,8 +34,8 @@ call plug#begin('~/.vim/plugged')
 " Plug 'davidhalter/jedi-vim'
 " let python_version_2 = 1
 
-" " Plug 'tmux-plugins/vim-tmux-focus-events'
-" " Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
 
 " " VIM Plugins
 " if !has('nvim')
