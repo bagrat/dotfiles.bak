@@ -23,17 +23,17 @@ hi default link BuffaloRSepCurrentLast BuffaloRSepCurrentHidden
 hi default link BuffaloRSepActiveLast BuffaloRSepActiveHidden
 
 " Separator Symbols
-let g:buffalo_rsep_current_hidden = "\u2b80"
-let g:buffalo_rsep_current_active = "\u2b80"
-let g:buffalo_lsep_hidden_current = "\u2b80"
-let g:buffalo_lsep_active_current = "\u2b80"
+let g:buffalo_rsep_current_hidden = "\ue0b0"
+let g:buffalo_rsep_current_active = "\ue0b0"
+let g:buffalo_lsep_hidden_current = "\ue0b0"
+let g:buffalo_lsep_active_current = "\ue0b0"
 
-let g:buffalo_lsep_hidden_active = "\u2b81"
-let g:buffalo_rsep_active_hidden = "\u2b81"
+let g:buffalo_lsep_hidden_active = "\ue0b1"
+let g:buffalo_rsep_active_hidden = "\ue0b1"
 
-let g:buffalo_rsep_hidden_hidden = "\u2b81"
-let g:buffalo_rsep_active_active = "\u2b81"
+let g:buffalo_rsep_hidden_hidden = "\ue0b1"
+let g:buffalo_rsep_active_active = "\ue0b1"
 
-let g:buffalo_rsep_hidden_last = "\u2b81"
-let g:buffalo_rsep_current_last = "\u2b80"
-let g:buffalo_rsep_active_last = "\u2b81"
+let g:buffalo_rsep_hidden_last = "\ue0b1"
+let g:buffalo_rsep_current_last = "\ue0b0"
+let g:buffalo_rsep_active_last = "\ue0b1"

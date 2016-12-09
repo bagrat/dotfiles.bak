@@ -1,9 +1,9 @@
 let g:lightline = {
             \ 'colorscheme': 'solarized_dark_n9code',
-            \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-            \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+            \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+            \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
             \ 'component': {
-            \   'readonly': '%{&readonly?"\u2b64":""}',
+            \   'readonly': '%{&readonly?"\ue0a2":""}',
             \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":""}',
             \ },
             \ 'inactive': {
@@ -11,7 +11,7 @@ let g:lightline = {
             \   ],
             \ },
             \ 'active': {
-            \   'left': [ 
+            \   'left': [
             \       [ 'mode', 'paste' ],
             \       [ 'fugitive', 'venv', 'readonly', 'filename', 'modified' ]
             \   ],
@@ -28,20 +28,17 @@ let g:lightline = {
             \   'ctrlpmark': 'CtrlPMark'
             \ },
             \ }
-"             \ 'enable': {
-"             \   'tabline': 1
-"             \ },
 
-" hi StatusLine ctermbg=10 ctermfg=10
-" hi StatusLineNC ctermbg=10 ctermfg=10
-hi LightlineMiddle_active ctermfg=0 ctermbg=0
-hi LightlineLeft_active ctermfg=0 ctermbg=0
-hi LightlineRight_active ctermfg=0 ctermbg=0
+hi StatusLine ctermbg=10 ctermfg=10 cterm=NONE guibg=NONE guifg=NONE gui=NONE
+hi StatusLineNC ctermbg=10 ctermfg=10 cterm=NONE guibg=NONE guifg=NONE gui=NONE
+hi LightlineMiddle_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
+hi LightlineLeft_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
+hi LightlineRight_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
 
 function! LightLineFugitive()
   try
     if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = "\u2b60 "  " edit here for cool mark
+      let mark = "\ue0a0 "  " edit here for cool mark
       let _ = fugitive#head()
       return strlen(_) ? mark._ : ''
     endif
@@ -61,7 +58,7 @@ endfunction
 function! LightLineFilename()
   let fname = expand('%:t')
   if fname == 'ControlP'
-    return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' . 
+    return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_next
   endif
@@ -97,7 +94,7 @@ function! LightLineVenv()
     catch
         let venv = ''
     endtry
-    return strlen(venv) ? "\u24d4 ".venv : ""
+    return strlen(venv) ? "\u233e ".venv : ""
 endfunction
 
 function! CtrlPMark()

@@ -1,12 +1,3 @@
-" noremap <C-h> <C-w>h
-" imap <C-h> <Esc><C-h>
-" noremap <C-j> <C-w>j
-" imap <C-j> <Esc><C-j>
-" noremap <C-k> <C-w>k
-" imap <C-k> <Esc><C-k>
-" noremap <C-l> <C-w>l
-" imap <C-l> <Esc><C-l>
-
 noremap <leader>= =
 
 " Window quick resize
