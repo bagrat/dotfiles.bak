@@ -27,3 +27,8 @@ export LANG=en_US.UTF-8
 export CLICOLOR=1
 
 ulimit -n 8192
+
+# Setting PATH for Python 3.6
+# The original version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH

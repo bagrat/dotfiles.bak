@@ -29,7 +29,7 @@ let g:lightline = {
             \ },
             \ }
 
-hi StatusLine ctermbg=10 ctermfg=10 cterm=NONE guibg=NONE guifg=NONE gui=NONE
+hi StatusLine ctermbg=10 ctermfg=10 cterm=bold guibg=NONE guifg=NONE gui=NONE
 hi StatusLineNC ctermbg=10 ctermfg=10 cterm=NONE guibg=NONE guifg=NONE gui=NONE
 hi LightlineMiddle_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
 hi LightlineLeft_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE

@@ -32,7 +32,11 @@ function g:GitIgnoreRegex(fname)
         let regex = substitute(regex, '\.', '\\.', 'g')
         let regex = substitute(regex, '*', '.*', 'g')
         let regex = substitute(regex, '?', '.', 'g')
+        if regex =~ '^.*\/$'
+            let regex = regex[:-2]
+        endif
         let regex = escape(regex, '/~')
+
         call add(regexes, regex)
     endfor
 
