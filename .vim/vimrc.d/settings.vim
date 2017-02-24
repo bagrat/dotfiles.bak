@@ -60,7 +60,7 @@ set cmdheight=1
 set laststatus=2
 
 " TODO clean these, and update Pmenu colors
-" set completeopt=longest,menuone,preview,noinsert
+set completeopt=longest,menuone,preview,noinsert
 " set ruler
 
 " Wildmenu

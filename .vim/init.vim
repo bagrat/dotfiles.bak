@@ -1,3 +1,6 @@
+set nocompatible
+filetype off
+
 for f in split(glob('~/.vim/vimrc.d/_*.vim'), '\n')
     exe 'source' f
 endfor
@@ -49,6 +52,9 @@ else
 endif
 
 call plug#end()
+
+filetype plugin indent on
+syntax enable
 
 for f in split(glob('~/.vim/vimrc.d/*.vim'), '\n')
     if f =~ "^[^_]"

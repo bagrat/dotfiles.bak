@@ -29,11 +29,12 @@ let g:lightline = {
             \ },
             \ }
 
-hi StatusLine ctermbg=10 ctermfg=10 cterm=bold guibg=NONE guifg=NONE gui=NONE
+hi StatusLine ctermbg=10 ctermfg=2 cterm=None guibg=NONE guifg=NONE gui=NONE
+hi WildMenu ctermbg=10 ctermfg=3 cterm=bold,underline guibg=NONE guifg=NONE gui=NONE
 hi StatusLineNC ctermbg=10 ctermfg=10 cterm=NONE guibg=NONE guifg=NONE gui=NONE
-hi LightlineMiddle_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
-hi LightlineLeft_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
-hi LightlineRight_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
+" hi LightlineMiddle_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
+" hi LightlineLeft_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
+" hi LightlineRight_active ctermfg=0 ctermbg=0 cterm=NONE guibg=NONE guifg=NONE gui=NONE
 
 function! LightLineFugitive()
   try
@@ -90,11 +91,12 @@ function! LightLineVenv()
         return ''
     endif
     try
-        let venv = virtualenv#statusline()
+        if exists('*virtualenv#statusline')
+            return "\u233e ".virtualenv#statusline()
+        endif
     catch
-        let venv = ''
     endtry
-    return strlen(venv) ? "\u233e ".venv : ""
+    return ''
 endfunction
 
 function! CtrlPMark()
