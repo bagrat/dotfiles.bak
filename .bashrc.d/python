@@ -1,13 +1,14 @@
 #!/bin/bash
+export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
 # Python Virtual Environment
 export WORKON_HOME=~/.virtualenvs
 VENVW=`which virtualenvwrapper.sh 2> /dev/null`
 if [ ! "$VENVW" == "" ]
 then
-    source $VENVW
     export VIRTUALENVWRAPPER_PYTHON=`which python`
     export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
+    source $VENVW
 fi
 
 # TODO: Deal with all venv hook stuff
