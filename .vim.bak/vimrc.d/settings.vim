@@ -36,9 +36,9 @@ set formatoptions+=qrnj1  " The flexible way to write/edit comments
 set ignorecase
 set smartcase
 set incsearch
-set showmatch
 set hlsearch
 
+set showmatch
 " General Settings
 set foldlevel=0
 set fileformat=unix

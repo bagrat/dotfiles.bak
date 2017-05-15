@@ -1,0 +1,44 @@
+" Source initial config files
+for f in split(glob('~/.vim/config/_*.vim'), '\n')
+    exe 'source' f
+endfor
+
+set nocompatible
+filetype off
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-unimpaired'  " Text Bubbling
+Plug 'tpope/vim-commentary'  " Comment things out
+Plug 'airblade/vim-gitgutter'
+Plug 'n9code/python-syntax'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'mileszs/ack.vim'
+" Plug 'bagrat/vim-buffalo'
+Plug 'bagrat/vim-workspace'
+" Plug 'maralla/completor.vim'
+Plug 'w0rp/ale'
+Plug 'davidhalter/jedi-vim'
+" TODO: Add Ag.vim
+
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
+
+call plug#end()
+
+" Source the rest of the config files
+for f in split(glob('~/.vim/config/*.vim'), '\n')
+    if f =~ "^[^_]"
+        exe 'source' f
+    endif
+endfor
+
+filetype plugin indent on
+syntax enable
