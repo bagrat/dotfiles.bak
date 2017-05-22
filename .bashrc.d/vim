@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# This is for NeoVim
-XDG_CONFIG_HOME=~/.config
-
-# No idea why was this for
-infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > /tmp/$TERM.ti
-tic /tmp/$TERM.ti

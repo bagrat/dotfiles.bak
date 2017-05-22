@@ -6,7 +6,7 @@
 **/.netrwhist
 **/*.sess
 
-.tmux/resurrect/*
+.tmux/resurrect
 **/*.png
 **/*.ti
 **/tmp

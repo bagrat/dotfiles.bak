@@ -5,7 +5,7 @@
 # otherwise - inactive.
 if [ $HELLO_ITS_ME ]
 then
-    export TMUX_INIT_STYLE="$HOME/.tmux/styles-active.conf"
+    export TMUX_INIT_STATE="active"
 else
-    export TMUX_INIT_STYLE="$HOME/.tmux/styles-inactive.conf"
+    export TMUX_INIT_STATE="inactive"
 fi
