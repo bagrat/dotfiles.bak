@@ -3,16 +3,16 @@
 # Configure the Prompt
 if [ $HELLO_ITS_ME ]
 then
-	PS_TEXT="$(echoc 3 0 ' \w' 1)$(echoc 0 8 '$ARROW_RF' 1) "
+	PS_TEXT="$(echoc 3 0 ' \w' 1)$(echoc 0 8 '$SYMSR' 1) "
 else
-	PS_TEXT="$(echoc 15 0 ' \u@\h' 1)$(echoc 8 0 '$ARROW_RE ' 1)$(echoc 3 0 '\w' 1)$(echoc 0 8 $ARROW_RF 1) "
+	PS_TEXT="$(echoc 15 0 ' \u@\h' 1)$(echoc 8 0 '$SYMSSR ' 1)$(echoc 3 0 '\w' 1)$(echoc 0 8 $SYMSR 1) "
 fi
 
-GIT_SUFFIX="$(echoc 8 0 '$ARROW_RE' 1)"
+GIT_SUFFIX="$(echoc 8 0 '$SYMSSR' 1)"
 GIT_PROMPT="$(echoc 4 0 "\$(__git_ps1 \" %s $GIT_SUFFIX\")" 1)"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1  # Disable default venv prompt
-VENV_SUFFIX="$(echoc 8 0 '$ARROW_RE' 1)"
+VENV_SUFFIX="$(echoc 8 0 '$SYMSSR' 1)"
 VENV_PROMPT="$(echoc 2 0 "\$(__venv_prompt \" %s $VENV_SUFFIX\")" 1)"
 
 export PS1="$VENV_PROMPT$GIT_PROMPT$PS_TEXT"

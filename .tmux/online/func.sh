@@ -1,7 +1,7 @@
 
 
 function online_icon {
-    ping -c 1 google.com 2>1 > /dev/null
+    ping -c 1 google.com 2>&1 > /dev/null
     OFFLINE=$?
 
     ONLINE_ICON=""

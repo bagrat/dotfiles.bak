@@ -1,19 +1,10 @@
 #!/bin/bash
 
-if [[ $HOSTNAME =~ ^n9code ]]
+if [[ $HELLO_ITS_ME ]]
 then
     export SYMSR=""
     export SYMSSR=""
     export SYMSL=""
     export SYMSSL=""
     export SYMTXW=""
-    export BAT_UP="∴"
-    export BAT_DOWN="∵"
-    export BAT_CUBE="∷"
-    export BAT_DOT="∙"
-    export INET_ON="◆"
-    export INET_OFF="◊"
-else
-    export INET_ON="O"
-    export INET_OFF="X"
 fi

@@ -2,11 +2,11 @@
 
 # set -x
 # When on my personal laptop, I do not need the hostname in the prompt
-if [[ "`hostname`" =~ ^n9code.* ]]
+if [[ "`hostname`" =~ ^bagrat13.* ]]
 then
-	export HELLO_ITS_ME=1
+    export HELLO_ITS_ME=1
 else
-	export HELLO_ITS_ME=0
+    export HELLO_ITS_ME=0
 fi
 
 

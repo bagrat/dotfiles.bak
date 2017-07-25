@@ -11,7 +11,9 @@ then
     source $VENVW
 fi
 
-# TODO: Deal with all venv hook stuff
+# These are the global hooks that trigger the per venv ones
+export VIRTUALENVWRAPPER_HOOK_DIR="$HOME/.venv.d"
+# The following are per venv hooks stored in private.d
 export VENV_HOOKS_HOME="$HOME/.private.d/venv-hooks"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 # ln -sf "$HOME/.venv.d/postactivate" "$WORKON_HOME/postactivate"
