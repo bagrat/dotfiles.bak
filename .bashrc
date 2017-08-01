@@ -2,7 +2,7 @@
 
 # set -x
 # When on my personal laptop, I do not need the hostname in the prompt
-if [[ "`hostname`" =~ ^bagrat13.* ]]
+if [[ "`hostname`" =~ ^(bagrat13|Bagrat-Aznauryan-NAT).*$ ]]
 then
     export HELLO_ITS_ME=1
 else
