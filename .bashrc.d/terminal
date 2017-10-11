@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configure the Prompt
-if [ $HELLO_ITS_ME ]
+if [ $HELLO_ITS_ME == "1" ]
 then
 	PS_TEXT="$(echoc 3 0 ' \w' 1)$(echoc 0 8 '$SYMSR' 1) "
 else
