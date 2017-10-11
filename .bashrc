@@ -9,6 +9,23 @@ else
     export HELLO_ITS_ME=0
 fi
 
+MY_KERNEL=`uname -s`
+
+case "$MY_KERNEL" in
+    Linux)
+        export IS_LINUX=1
+        export IS_MAC=0
+        ;;
+    Darwin)
+        export IS_LINUX=0
+        export IS_MAC=1
+        ;;
+    *)
+        export IS_LINUX=0
+        export IS_MAC=0
+        ;;
+esac
+
 
 for file in ~/.bashrc.d/*
 do
