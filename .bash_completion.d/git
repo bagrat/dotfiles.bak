@@ -1,3 +1,6 @@
 #!/bin/bash
 
-source $GIT_SOURCE_HOME/git-completion.bash
+if [ $IS_MAC == "1" ]
+then
+    source $GIT_SOURCE_HOME/git-completion.bash
+fi
