@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $IS_MAC == "1" ]
+if [ "$IS_MAC" == "1" ]
 then
     GIT_SOURCE_HOME="$(dirname $(greadlink -f $(which git)))/../etc/bash_completion.d"
     GIT_PROMPT_FILE="$GIT_SOURCE_HOME/git-prompt.sh"
