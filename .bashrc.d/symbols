@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$HELLO_ITS_ME" == "1" ] || [ "$HAS_FONT" == "1"]
+if [ "$HELLO_ITS_ME" == "1" ] || [ "$HAS_FONT" == "1" ]
 then
     export SYMSR=""
     export SYMSSR=""
