@@ -39,7 +39,7 @@ function install_file {
     ln -s "$SRC" "$DEST"
 }
 
-FILES=(".bashrc" ".bashrc.d" ".bash_completion" ".bash_completion.d" ".inputrc"
+FILES=(".bashrc" ".bashrc.d" ".bash_compl" ".bash_compl.d" ".inputrc"
        ".vimrc" ".vim"
        ".tmux.conf" ".tmux"
        ".venv.d")

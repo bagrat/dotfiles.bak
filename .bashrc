@@ -34,7 +34,7 @@ do
         source $file
     fi
 done
-source ~/.bash_completion
+source ~/.bash_compl
 
 
 if [ -f ~/.custom ]

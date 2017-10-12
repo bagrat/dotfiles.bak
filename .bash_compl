@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for file in ~/.bash_completion.d/*
+for file in ~/.bash_compl.d/*
 do
    source $file
 done
