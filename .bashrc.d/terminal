@@ -5,7 +5,7 @@ if [ $HELLO_ITS_ME == "1" ]
 then
 	PS_TEXT="$(echoc 3 0 ' \w' 1)$(echoc 0 8 '$SYMSR' 1) "
 else
-	PS_TEXT="$(echoc 15 0 ' \u@\h' 1)$(echoc 8 0 '$SYMSSR ' 1)$(echoc 3 0 '\w' 1)$(echoc 0 8 $SYMSR 1) "
+	PS_TEXT="$(echoc 15 0 ' \u@\h' 1)$(echoc 8 0 '$SYMSSR ' 1)$(echoc 3 0 '\w' 1)$(echoc 0 8 '$SYMSR' 1) "
 fi
 
 GIT_SUFFIX="$(echoc 8 0 '$SYMSSR' 1)"

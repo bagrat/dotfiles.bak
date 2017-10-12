@@ -26,6 +26,10 @@ case "$MY_KERNEL" in
         ;;
 esac
 
+if [ -f ~/.custom ]
+then
+    source ~/.custom
+fi
 
 for file in ~/.bashrc.d/*
 do
@@ -35,12 +39,6 @@ do
     fi
 done
 source ~/.bash_compl
-
-
-if [ -f ~/.custom ]
-then
-    source ~/.custom
-fi
 
 ## Base environment variables ##
 export HISTCONTROL=ignoredups:erasedupss
