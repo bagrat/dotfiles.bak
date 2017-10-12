@@ -36,6 +36,12 @@ do
 done
 source ~/.bash_completion
 
+
+if [ -f ~/.custom ]
+then
+    source ~/.custom
+fi
+
 ## Base environment variables ##
 export HISTCONTROL=ignoredups:erasedupss
 shopt -s histappend
