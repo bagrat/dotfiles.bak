@@ -16,15 +16,13 @@ export VIRTUALENVWRAPPER_HOOK_DIR="$HOME/.venv.d"
 # The following are per venv hooks stored in private.d
 export VENV_HOOKS_HOME="$HOME/.private.d/venv-hooks"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-# ln -sf "$HOME/.venv.d/postactivate" "$WORKON_HOME/postactivate"
-# ln -sf "$HOME/.venv.d/postdeactivate" "$WORKON_HOME/postdeactivate"
 
 function __venv_prompt {
     fmt="$1"
     venv="${VIRTUAL_ENV:+$(basename $VIRTUAL_ENV)}"
     if [ ! -z "$venv" ]
     then
-        printf "$fmt" "$venv"
+        printf -- "$fmt" "$venv"
     fi
 }
 

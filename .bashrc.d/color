@@ -16,5 +16,7 @@ function echoc {
 		CSE=""
 	fi
 
-	echo -e "$ESC$(tput setaf $FG)$CSE$ESC$(tput setab $BG)$CSE$MSG$ESC$(tput sgr0)$CSE"
+	echo -en "$ESC$(tput setaf $FG)$(tput setab $BG)$CSE"
+        echo -en "$MSG"
+        echo -en "$ESC$(tput sgr0)$CSE"
 }

@@ -15,6 +15,10 @@ function NERDTreeGitIgnoreFilter(params)
     return a:params['path'].str() =~ g:GitIgnoreRegex(fname)
 endfunction
 
+let s:default_patterns = [
+            \   '.git',
+            \ ]
+
 function g:GitIgnoreRegex(fname)
     if exists('b:NERDTreeGitIgnoreRegex')
         return b:NERDTreeGitIgnoreRegex
@@ -38,6 +42,10 @@ function g:GitIgnoreRegex(fname)
         let regex = escape(regex, '/~')
 
         call add(regexes, regex)
+    endfor
+
+    for d in s:default_patterns
+        call add(regexes, d)
     endfor
 
     let b:NERDTreeGitIgnoreRegex = '\(' . join(regexes, '\|') . '\)$'
