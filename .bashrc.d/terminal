@@ -19,7 +19,7 @@ export PS1="$VENV_PROMPT$GIT_PROMPT$PS_TEXT$(echoc 8 8 " " 1)"
 
 # Configure the default Editor
 export EDITOR='vim'
-export TERM=screen-256color
+export TERM='screen-256color'
 
 function cdd {
     pushd $* 1> /dev/null && pwd && ls

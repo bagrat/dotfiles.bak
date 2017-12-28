@@ -7,16 +7,23 @@ endif
 let loaded_nerdtree_gitignore_filter = 1
 
 function NERDTreeGitIgnoreFilter(params)
-    let fname = a:params['nerdtree'].root.path.str() . '/.gitignore'
+    let root = a:params['nerdtree'].root.path.str()
+    let fname = root . '/.gitignore'
     if !filereadable(fname)
         return
     endif
 
-    return a:params['path'].str() =~ g:GitIgnoreRegex(fname)
+    let item = a:params['path'].str()
+    let item = substitute(item, escape(root, '/'), '', 'g')
+    let item = item[1:]
+
+    let b:hello = item
+
+    return item =~ g:GitIgnoreRegex(fname)
 endfunction
 
 let s:default_patterns = [
-            \   '.git',
+            \   '\.git',
             \ ]
 
 function g:GitIgnoreRegex(fname)
@@ -39,6 +46,7 @@ function g:GitIgnoreRegex(fname)
         if regex =~ '^.*\/$'
             let regex = regex[:-2]
         endif
+
         let regex = escape(regex, '/~')
 
         call add(regexes, regex)
@@ -48,7 +56,7 @@ function g:GitIgnoreRegex(fname)
         call add(regexes, d)
     endfor
 
-    let b:NERDTreeGitIgnoreRegex = '\(' . join(regexes, '\|') . '\)$'
+    let b:NERDTreeGitIgnoreRegex = '^\(' . join(regexes, '\|') . '\)$'
     return b:NERDTreeGitIgnoreRegex
 endfunction
 

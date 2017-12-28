@@ -15,7 +15,7 @@ else
         function __git_ps1 {
             return
         }
-        echo "Error: git prompt file not found."
+        # echo "Error: git prompt file not found."
     fi
 fi
 
