@@ -2,7 +2,7 @@
 
 # set -x
 # When on my personal laptop, I do not need the hostname in the prompt
-if [[ "`hostname`" =~ ^(bagrat13|Bagrat-Aznauryan-NAT).*$ ]]
+if [[ "`hostname`" =~ ^(bagrat13|Bagrat-Aznauryan-.*).*$ ]]
 then
     export HELLO_ITS_ME=1
 else
@@ -46,6 +46,3 @@ shopt -s histappend
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-# export CLICOLOR=1
-
-ulimit -n 8192
