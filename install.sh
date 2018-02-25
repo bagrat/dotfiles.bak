@@ -1,26 +1,24 @@
 #!/bin/bash
+
 echo "Installing dotfiles"
 echo "-------------------"
 
 # Find the absolute path to the dotfiles
-ROOT="`cd \"$(pwd)/$(dirname $0)\"; pwd`"
-
-function node_exists {
-    ls "$1" &> /dev/null;
-    if [ $? != 0 ]
-    then
-            echo 0
-    else
-            echo 1
-    fi
-}
+DOTFILES="`dirname \`realpath install.sh\``"
 
 function maybe_backup {
     DEST="$1"
-    if [ `node_exists "$DEST"` == 1 ]
+
+    if [ -z "$SRC" ] || [ -z "$DEST" ]
     then
-            echo "    $DEST already exists, backing up..."
-            mv "$DEST" "$DEST.bak.`date +%s`"
+        echo "Error: Please specify a file or directory name"
+        exit 1
+    fi
+
+    if [ -e "$DEST" ]
+    then
+        echo "    $DEST already exists, backing up..."
+        mv "$DEST" "$DEST.bak.`date +%s`"
     fi
 }
 
@@ -30,9 +28,10 @@ function install_file {
 
     if [ -z "$SRC" ] || [ -z "$DEST" ]
     then
-            echo "Please specify source and destination"
-            return 1
+        echo "Error: Please specify source and destination"
+        exit 1
     fi
+
     echo "Installing file: $DEST"
 
     maybe_backup "$DEST"
@@ -46,13 +45,9 @@ FILES=(".bashrc" ".bashrc.d" ".bash_compl" ".bash_compl.d" ".inputrc"
 
 for FILE in ${FILES[@]}
 do
-	install_file "$ROOT/$FILE" ~/$FILE
+    install_file "$DOTFILES/$FILE" "$HOME/$FILE"
 done
 
-maybe_backup "~/.config"
-mkdir ~/.config
-ln -s ~/.vim ~/.config/nvim
-install_file "$ROOT/.vim/init.vim" ~/.vimrc
 echo "Installing vim plugins"
 vim +PlugInstall +q +q
 
