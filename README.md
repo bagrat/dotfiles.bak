@@ -24,6 +24,26 @@ environment.
 ### Manual Installation
 
 If you are the kind that does not trust every single script, you are good too.
-You can just clone the repo and use whatever files you like. If you wish to use
-all of them, you can manually run the `install.sh` script which is shipped with
-the repo.
+You can just clone the repo and use whatever files you like. At this point
+still, you can automate the installation process by running:
+
+```
+$ ./install.sh
+```
+
+## Features and Keymaps
+
+The following sections provide detailed features and keymaps that come from the
+dotfiles configuration files for each bach, vim and tmux.
+
+### Bash
+
+TBD
+
+### Vim
+
+TBD
+
+### Tmux
+
+TBD
