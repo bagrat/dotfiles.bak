@@ -1,5 +1,4 @@
 #!/bin/bash
-export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
 # Python Virtual Environment
 export WORKON_HOME=~/.virtualenvs
