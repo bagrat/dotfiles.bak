@@ -42,7 +42,18 @@ TBD
 
 ### Vim
 
-TBD
+#### Keymaps
+
+*Note:* `<leader>` is configured as `,`.
+
+* Close buffer - `<leader><tab>`
+* Close window - `<leader>q`
+* Close all (force) - `<leader>Q`
+
+* Jump to end of line (same as `$`) - `<ctrl>-e` (like in bash)
+* Jump to beginning of line (same as `^`) - `<ctrl>-a` (like in bash)
+
+* Toggle NERDTree - `<leader>t`
 
 ### Tmux
 
