@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH=/usr/local/opt/python3/bin:$PATH
 
 # Python Virtual Environment
 export WORKON_HOME=~/.virtualenvs

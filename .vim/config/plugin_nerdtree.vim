@@ -4,11 +4,10 @@ let NERDTreeShowHidden = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeAutoDeleteBuffer=1
 
-" let g:NERDTreeDirArrowExpandable="\uf138"
-" let g:NERDTreeDirArrowCollapsible="\uf13a"
-
-let g:NERDTreeDirArrowExpandable="\uf460"
-let g:NERDTreeDirArrowCollapsible="\uf47c"
+if $USE_SYMBOLS == 1
+    let g:NERDTreeDirArrowExpandable=$SYMFOLDEREXPAND
+    let g:NERDTreeDirArrowCollapsible=$SYMFOLDERCOLLAPSE
+endif
 
 
 " TODO: Move this into workspace.vim
@@ -28,13 +27,13 @@ function! g:CloseBuffer()
 endfunction
 
 let g:NERDTreeIndicatorMapCustom = {
-            \ "Modified"  : "\uf4a7",
-            \ "Staged"    : "\uf431",
-            \ "Untracked" : "\uf128",
-            \ "Renamed"   : "\uf432",
-            \ "Unmerged"  : "\uf066",
-            \ "Deleted"   : "\uf00d",
-            \ "Dirty"     : "\uf4a7",
+            \ "Modified"  : $SYMGITMODIFIED,
+            \ "Staged"    : $SYMGITSTAGED,
+            \ "Untracked" : $SYMGITUNTRACKED,
+            \ "Renamed"   : $SYMGITRENAMED,
+            \ "Unmerged"  : $SYMGITUNMERGED,
+            \ "Deleted"   : $SYMGITDELETED,
+            \ "Dirty"     : $SYMGITDIRTY,
             \ "Clean"     : "",
             \ "Unknown"   : ""
             \ }

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# set -x
 # When on my personal laptop, I do not need the hostname in the prompt
 HOSTNAME_REGEX="^(bagrat13|Bagrat-Aznauryan-.*).*$"
 if [[ "`hostname`" =~ $HOSTNAME_REGEX ]]
@@ -8,6 +7,11 @@ then
     export HELLO_ITS_ME=1
 else
     export HELLO_ITS_ME=0
+fi
+
+if [[ "$USE_SYMBOLS" != "0" ]]
+then
+    export USE_SYMBOLS=1
 fi
 
 MY_KERNEL=`uname -s`
@@ -27,9 +31,9 @@ case "$MY_KERNEL" in
         ;;
 esac
 
-if [ -f ~/.custom ]
+if [ -f ~/.customrc ]
 then
-    source ~/.custom
+    source ~/.customrc
 fi
 
 for file in ~/.bashrc.d/*

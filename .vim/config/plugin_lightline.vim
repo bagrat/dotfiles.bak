@@ -6,11 +6,11 @@ let g:lightline.enable.tabline = 0
 let g:lightline.colorscheme = 'solarized_dark_bagrat'
 
 let g:lightline.separator = {}
-let g:lightline.separator.left = "\ue0b0"
-let g:lightline.separator.right = "\ue0b2"
+let g:lightline.separator.left = $SYMSR
+let g:lightline.separator.right = $SYMSL
 let g:lightline.subseparator = {}
-let g:lightline.subseparator.left = "\ue0b1"
-let g:lightline.subseparator.right = "\ue0b3"
+let g:lightline.subseparator.left = $SYMDDL
+let g:lightline.subseparator.right = $SYMSSR
 
 let g:lightline.inactive = {}
 let g:lightline.inactive.left = [
@@ -32,7 +32,7 @@ let g:lightline.active.right = [
             \]
 
 let g:lightline.component = {}
-let g:lightline.component.blank = "%{\"\ue62b\"}"
+let g:lightline.component.blank = "%{\"". $SYMVIM_ICON . "\"}"
 
 let g:lightline.component_function = {}
 let g:lightline.component_function.paste = 'LightLinePaste'
@@ -49,7 +49,7 @@ let g:lightline.component_function.vim_icon = 'LightLineVimIcon'
 
 function! LightLineVimIcon()
     if winwidth(0) > 20
-        return "\ue62b"
+        return $SYMVIM_ICON
     endif
 
     return ''
@@ -66,7 +66,8 @@ function! LightLineModified()
         return ''
     endif
 
-    return &modified ? "\uf0c7" : &modifiable ? &readonly ? "\uf13e" : '' : "\uf023"
+
+    return &modified ? $SYMFLOPPY : &modifiable ? &readonly ? $SYMREADONLY : '' : $SYMLOCKED
 endfunction
 
 function! LightLinePaste()
@@ -80,7 +81,7 @@ function! LightLinePaste()
         return ''
     endif
 
-    return &paste ? "\uf0ea" : ''
+    return &paste ? $SYMPASTE : ''
 endfunction
 
 function! LightLineFilename()
@@ -98,11 +99,11 @@ function! LightLineFilename()
     endif
 
     if fname == ''
-        return "\uf069"
+        return $SYMSTAR
     endif
 
     let icon = ''
-    if exists('*WebDevIconsGetFileTypeSymbol')
+    if exists('*WebDevIconsGetFileTypeSymbol') && $USE_SYMBOLS == 1
         let icon = WebDevIconsGetFileTypeSymbol(fname)
     endif
 
@@ -144,7 +145,7 @@ function! LightLineBranch()
         return ''
     endif
 
-    return "\ue0a0 " . branch
+    return $SYMBRANCH . " " . branch
 endfunction
 
 function! LightLineNerdTreeIcon()
@@ -152,7 +153,7 @@ function! LightLineNerdTreeIcon()
 
     if fname =~ 'NERD_tree'
         if winwidth(0) > 9
-            return "\ue257"
+            return $SYMPROJECT
         endif
         return ''
     endif
@@ -164,19 +165,19 @@ function! LightLineCtrlpIcon()
     let fname = expand('%:t')
 
     if fname =~ 'ControlP'
-        return "\uf002"
+        return $SYMSEARCH
     endif
 
     return ''
 endfunction
 
 let s:ctrlp_mode_map = {
-            \   "mru": "\uf017 mru",
-            \   "mru files": "\uf017 mru",
-            \   "files": "\uf016 files",
-            \   "fil": "\uf016 files",
-            \   "buf": "\uf15c buffers",
-            \   "buffers": "\uf15c buffers",
+            \   "mru": $SYMMRU . " mru",
+            \   "mru files": $SYMMRU . " mru",
+            \   "files": $SYMFILE . " files",
+            \   "fil": $SYMFILE . " files",
+            \   "buf": $SYMBUFFER . " buffers",
+            \   "buffers": $SYMBUFFER . " buffers",
             \}
 
 function! LightLineCtrlpMode()

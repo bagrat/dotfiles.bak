@@ -36,6 +36,8 @@ $ ./install.sh
 The following sections provide detailed features and keymaps that come from the
 dotfiles configuration files for each bach, vim and tmux.
 
+Hostname thing...
+
 ### Bash
 
 TBD
@@ -52,6 +54,8 @@ TBD
 
 * Jump to end of line (same as `$`) - `<ctrl>-e` (like in bash)
 * Jump to beginning of line (same as `^`) - `<ctrl>-a` (like in bash)
+
+* Toggle comment - `,/`
 
 * Toggle NERDTree - `<leader>t`
 

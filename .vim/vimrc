@@ -18,14 +18,15 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-unimpaired'  " Text Bubbling
 Plug 'tpope/vim-commentary'  " Comment things out
 Plug 'airblade/vim-gitgutter'
-Plug 'n9code/python-syntax'
+Plug 'bagrat/python-syntax'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mileszs/ack.vim'
-" Plug 'bagrat/vim-buffalo'
 Plug 'bagrat/vim-workspace'
 " Plug 'maralla/completor.vim'
 Plug 'w0rp/ale'
 Plug 'davidhalter/jedi-vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'fatih/vim-go'
 " TODO: Add Ag.vim
 
 Plug 'tmux-plugins/vim-tmux-focus-events'

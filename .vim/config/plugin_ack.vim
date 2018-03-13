@@ -8,7 +8,7 @@ let g:ack_mappings = {
 
 
 function! FoldText()
-    let plus = "\uf0fe "
+    let plus = $SYMFOLDEXPAND . " "
     let line = getline(v:foldstart)
     let line_count = v:foldend - v:foldstart + 1
 
@@ -36,7 +36,7 @@ function! FoldText()
         let trunc_line = line . padding
     endif
 
-    let line_info = "\uf036 " . line_count
+    let line_info = $SYMFILELINES . " " . line_count
 
     return plus . trunc_line . line_info
 endfunction
