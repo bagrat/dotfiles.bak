@@ -6,7 +6,7 @@ let g:ale_statusline_format = [$SYMERROR . " %d", $SYMWARNING . " %d", $SYMOK]
 
 let g:ale_echo_msg_error_str = $SYMERROR
 let g:ale_echo_msg_warning_str = $SYMWARNING
-let g:ale_echo_msg_format = " " . $SYMWRENCH . " %linter% " . $SYMSLACK . "  %severity% %s"
+let g:ale_echo_msg_format = " " . $SYMWRENCH . " %linter% " . $SYMSLASH . "  %severity% %s"
 
 function! s:set_colors()
     exec "hi! ALEErrorSign ctermfg=1 ctermbg=" . synIDattr(hlID('SignColumn'),'bg')
