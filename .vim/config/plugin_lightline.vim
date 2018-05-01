@@ -107,7 +107,7 @@ function! LightLineFilename()
         let icon = WebDevIconsGetFileTypeSymbol(fname)
     endif
 
-    return icon . fname
+    return icon . ' ' . fname
 endfunction
 
 function! LightLineMode()
