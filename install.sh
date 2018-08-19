@@ -40,6 +40,7 @@ function install_file {
 
 FILES=(".bashrc" ".bashrc.d" ".bash_compl" ".bash_compl.d" ".inputrc"
        ".vimrc" ".vim"
+       ".gitignore"
        ".tmux.conf" ".tmux"
        ".venv.d")
 

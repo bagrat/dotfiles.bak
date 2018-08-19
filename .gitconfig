@@ -1,0 +1,13 @@
+# This is Git's per-user configuration file.
+[user]
+	email = contact@bagrat.io
+	name = Bagrat Aznauryan
+[merge]
+	tool = vimdiff
+[mergetool]
+	keepBackup = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
