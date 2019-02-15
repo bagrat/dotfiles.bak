@@ -17,6 +17,9 @@ function! s:set_colors()
     hi! PmenuSbar ctermfg=247 ctermbg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
     hi! PmenuThumb ctermfg=2 ctermbg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
 
+    hi! IncSearch ctermfg=8 ctermbg=4 cterm=NONE term=NONE guibg=NONE guifg=NONE gui=NONE
+    hi! Search ctermfg=8 ctermbg=4 cterm=NONE guibg=NONE guifg=NONE gui=NONE
+
     hi! StatusLine ctermbg=10 ctermfg=2 cterm=None guibg=NONE guifg=NONE gui=NONE
     hi! WildMenu ctermbg=10 ctermfg=3 cterm=bold,underline guibg=NONE guifg=NONE gui=NONE
     hi! StatusLineNC ctermbg=10 ctermfg=10 cterm=NONE guibg=NONE guifg=NONE gui=NONE

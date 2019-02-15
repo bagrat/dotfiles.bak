@@ -17,8 +17,6 @@ function NERDTreeGitIgnoreFilter(params)
     let item = substitute(item, escape(root, '/'), '', 'g')
     let item = item[1:]
 
-    let b:hello = item
-
     return item =~ g:GitIgnoreRegex(fname)
 endfunction
 

@@ -4,7 +4,9 @@ endif
 
 let g:WebDevIconsOS = 'Darwin'
 
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+" let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:DevIconsEnableFolderExtensionPatternMatching = 0
+
+let g:webdevicons_conceal_nerdtree_brackets = 1
